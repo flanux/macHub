@@ -21,10 +21,10 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
       
-      - name: Setup Gradle
+      - name: Setup Gradle 8.2
         uses: gradle/actions/setup-gradle@v3
         with:
-          gradle-version: '8.2'
+          gradle-version: 8.2
       
       - name: Cache Gradle packages
         uses: actions/cache@v4
@@ -36,11 +36,8 @@ jobs:
           restore-keys: |
             gradle-${{ runner.os }}-
       
-      - name: Make gradlew executable
-        run: chmod +x gradlew
-      
       - name: Build Debug APK
-        run: ./gradlew assembleDebug
+        run: gradle assembleDebug
       
       - name: Upload APK as Artifact
         uses: actions/upload-artifact@v4
