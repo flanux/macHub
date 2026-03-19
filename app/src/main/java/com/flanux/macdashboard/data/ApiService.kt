@@ -10,7 +10,7 @@ interface ApiService {
     
     companion object {
         // TODO: Replace USERNAME and REPO with your actual GitHub username and repo name
-        private const val BASE_URL = "https://USERNAME.github.io/REPO/"
+        private const val BASE_URL = "https://flanux.github.io/macHub/"
         
         fun create(): ApiService {
             val retrofit = Retrofit.Builder()
