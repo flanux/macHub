@@ -25,7 +25,7 @@ private const val BASE_URL = "https://YOUR_USERNAME.github.io/macHub/"
 5. Save
 
 Your data will be available at:
-`https://YOUR_USERNAME.github.io/mac-dashboard/data/notices.json`
+`https://YOUR_USERNAME.github.io/macHub/data/notices.json`
 
 ## 3️⃣ Run the Scraper
 
@@ -58,7 +58,7 @@ GitHub Actions will automatically build your APK.
 - Go to **Actions** tab
 - Click the latest workflow run
 - Scroll to **Artifacts**
-- Download **MAC-Dashboard-APK**
+- Download **MAC-HUB-APK**
 
 OR
 
@@ -75,7 +75,7 @@ OR
 
 ### "No notices found"
 - Check if `data/notices.json` exists in repo
-- Open `https://YOUR_USERNAME.github.io/mac-dashboard/data/notices.json` in browser
+- Open `https://YOUR_USERNAME.github.io/macHub/data/notices.json` in browser
 - If it's not accessible, GitHub Pages might still be deploying (wait 2-3 minutes)
 
 ### Scraper finds too much garbage
