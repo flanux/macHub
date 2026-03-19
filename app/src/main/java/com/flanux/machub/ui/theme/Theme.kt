@@ -1,4 +1,4 @@
-package com.flanux.macdashboard.ui.theme
+package com.flanux.machub.ui.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme

@@ -1,4 +1,4 @@
-package com.flanux.macdashboard
+package com.flanux.machub
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -9,9 +9,9 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.flanux.macdashboard.ui.NoticeListScreen
-import com.flanux.macdashboard.ui.NoticeViewModel
-import com.flanux.macdashboard.ui.theme.MACDashboardTheme
+import com.flanux.machub.ui.NoticeListScreen
+import com.flanux.machub.ui.NoticeViewModel
+import com.flanux.machub.ui.theme.MACDashboardTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

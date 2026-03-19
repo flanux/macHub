@@ -1,9 +1,9 @@
-package com.flanux.macdashboard.ui
+package com.flanux.machub.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.flanux.macdashboard.data.Notice
-import com.flanux.macdashboard.data.NoticeRepository
+import com.flanux.machub.data.Notice
+import com.flanux.machub.data.NoticeRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow

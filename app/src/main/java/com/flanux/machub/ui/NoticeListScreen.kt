@@ -1,4 +1,4 @@
-package com.flanux.macdashboard.ui
+package com.flanux.machub.ui
 
 import android.content.Intent
 import android.net.Uri
@@ -18,7 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import com.flanux.macdashboard.data.Notice
+import com.flanux.machub.data.Notice
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

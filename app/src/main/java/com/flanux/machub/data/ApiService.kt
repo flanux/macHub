@@ -1,4 +1,4 @@
-package com.flanux.macdashboard.data
+package com.flanux.machub.data
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

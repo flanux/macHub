@@ -1,4 +1,4 @@
-package com.flanux.macdashboard.data
+package com.flanux.machub.data
 
 import com.google.gson.annotations.SerializedName
 

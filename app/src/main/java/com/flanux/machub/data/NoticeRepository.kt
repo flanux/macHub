@@ -1,4 +1,4 @@
-package com.flanux.macdashboard.data
+package com.flanux.machub.data
 
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow

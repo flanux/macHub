@@ -24,7 +24,7 @@
 -keep class * implements com.google.gson.JsonDeserializer
 
 # Keep data classes
--keep class com.flanux.macdashboard.data.** { *; }
+-keep class com.flanux.machub.data.** { *; }
 
 # Keep generic signatures
 -keepattributes Signature

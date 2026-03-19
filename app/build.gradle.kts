@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.flanux.macdashboard"
+    namespace = "com.flanux.machub"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.flanux.macdashboard"
+        applicationId = "com.flanux.machub"
         minSdk = 24
         targetSdk = 34
         versionCode = 1

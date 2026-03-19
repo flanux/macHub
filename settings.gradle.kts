@@ -14,5 +14,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "MAC Dashboard"
+rootProject.name = "macHub"
 include(":app")
