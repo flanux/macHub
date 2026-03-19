@@ -13,7 +13,7 @@ private const val BASE_URL = "https://USERNAME.github.io/REPO/"
 
 To your actual GitHub Pages URL:
 ```kotlin
-private const val BASE_URL = "https://YOUR_USERNAME.github.io/mac-dashboard/"
+private const val BASE_URL = "https://YOUR_USERNAME.github.io/macHub/"
 ```
 
 ## 2️⃣ Enable GitHub Pages
