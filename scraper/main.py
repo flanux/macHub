@@ -7,30 +7,33 @@ import re
 import os
 
 BASE_URL = "https://www.macpokhara.edu.np/"
-OUTPUT_FILE = "data/notices.json"
+
+URLS = {
+    "notices": BASE_URL,
+    "student_downloads": BASE_URL + "Downloads/ShowStudentDownloadDetails",
+    "general_downloads": BASE_URL + "Downloads/ShowOtherDownloadDetails",
+    "gallery_routine": BASE_URL + "Gallery/ShowGalleryGeneral?id=4affa6d7-c154-4b8f-a2b6-d8efff49f659",
+    "gallery_semester": BASE_URL + "Gallery/ShowGalleryGeneral?id=eb7b0844-c6ef-4ff3-84e2-a8078d0f68d9",
+}
+
+OUTPUT_DIR = "data"
 
 headers = {
     "User-Agent": "Mozilla/5.0 (X11; Linux x86_64)"
 }
 
-KEYWORDS = ["exam", "result", "routine", "batch", "semester", "notice", "project"]
-JUNK = ["about", "program", "mail", "team", "iost", "login", "contact"]
-
 # ---------------------------
-# helpers
+# Helpers
 # ---------------------------
 
 def clean_text(text):
-    """Clean and normalize text"""
     return " ".join(text.split())
 
 def extract_batch(title):
-    """Extract batch year from title (e.g., 2079, 2080)"""
     match = re.search(r'20\d{2}', title)
     return match.group(0) if match else None
 
 def classify(title):
-    """Classify notice by category"""
     t = title.lower()
     if "result" in t:
         return "result"
@@ -42,40 +45,28 @@ def classify(title):
         return "project"
     return "general"
 
-def is_real_notice(title):
-    """Filter out navigation and junk links"""
-    t = title.lower()
-    if len(t) < 20:
-        return False
-    if not any(k in t for k in KEYWORDS):
-        return False
-    if any(j in t for j in JUNK):
-        return False
-    return True
-
-def fetch_html():
-    """Fetch HTML from MAC website"""
-    res = requests.get(BASE_URL, headers=headers, timeout=10)
-    res.raise_for_status()
-    return res.text
-
 # ---------------------------
-# main scraper
+# Notices Scraper
 # ---------------------------
 
-def scrape():
-    """Scrape notices from MAC website"""
-    html = fetch_html()
+def scrape_notices():
+    """Scrape notices from homepage"""
+    print("[*] Scraping notices...")
+    
+    html = requests.get(URLS["notices"], headers=headers, timeout=10).text
     soup = BeautifulSoup(html, "html.parser")
     
-    # Target the main content container
     container = soup.select_one(".col-lg-8")
     if not container:
-        raise Exception("Notice container (.col-lg-8) not found")
+        print("[!] Notice container not found")
+        return []
     
     links = container.find_all("a")
-    
     notices = []
+    
+    KEYWORDS = ["exam", "result", "routine", "batch", "semester", "notice", "project"]
+    JUNK = ["about", "program", "mail", "team", "iost", "login", "contact"]
+    
     for a in links:
         title = clean_text(a.get_text())
         href = a.get("href")
@@ -83,18 +74,21 @@ def scrape():
         if not title or not href:
             continue
         
-        if not is_real_notice(title):
+        t = title.lower()
+        if len(t) < 20:
+            continue
+        if not any(k in t for k in KEYWORDS):
+            continue
+        if any(j in t for j in JUNK):
             continue
         
-        notice = {
+        notices.append({
             "title": title,
             "url": urljoin(BASE_URL, href),
             "category": classify(title),
             "batch": extract_batch(title),
             "scraped_at": datetime.now(timezone.utc).isoformat()
-        }
-        
-        notices.append(notice)
+        })
     
     # Deduplicate
     seen = set()
@@ -104,43 +98,222 @@ def scrape():
             seen.add(n["url"])
             unique.append(n)
     
-    # Site already lists newest first, so reverse to maintain order
-    unique = unique[::-1]
-    
-    return unique
+    print(f"[+] Found {len(unique)} notices")
+    return unique[::-1]
 
 # ---------------------------
-# entry point
+# Downloads Scraper
+# ---------------------------
+
+def scrape_downloads(url, download_type):
+    """Scrape download pages (student/general)"""
+    print(f"[*] Scraping {download_type} downloads...")
+    
+    try:
+        html = requests.get(url, headers=headers, timeout=10).text
+        soup = BeautifulSoup(html, "html.parser")
+        
+        downloads = []
+        
+        # Look for download links (PDFs, docs, etc.)
+        links = soup.find_all("a", href=True)
+        
+        for link in links:
+            href = link.get("href")
+            title = clean_text(link.get_text())
+            
+            # Check if it's a file link
+            if any(ext in href.lower() for ext in ['.pdf', '.doc', '.docx', '.xls', '.xlsx', '.zip']):
+                file_type = href.split('.')[-1].upper()
+                
+                downloads.append({
+                    "title": title if title else f"Download {file_type}",
+                    "url": urljoin(BASE_URL, href),
+                    "type": file_type,
+                    "category": download_type,
+                    "scraped_at": datetime.now(timezone.utc).isoformat()
+                })
+        
+        # Also check for download cards/sections
+        download_cards = soup.select(".download-item, .file-item, .card")
+        for card in download_cards:
+            title_elem = card.select_one("h3, h4, .title, .name")
+            link_elem = card.select_one("a[href]")
+            
+            if title_elem and link_elem:
+                title = clean_text(title_elem.get_text())
+                href = link_elem.get("href")
+                
+                if href and any(ext in href.lower() for ext in ['.pdf', '.doc', '.docx', '.xls', '.xlsx', '.zip']):
+                    file_type = href.split('.')[-1].upper()
+                    
+                    downloads.append({
+                        "title": title,
+                        "url": urljoin(BASE_URL, href),
+                        "type": file_type,
+                        "category": download_type,
+                        "scraped_at": datetime.now(timezone.utc).isoformat()
+                    })
+        
+        # Deduplicate
+        seen = set()
+        unique = []
+        for d in downloads:
+            if d["url"] not in seen:
+                seen.add(d["url"])
+                unique.append(d)
+        
+        print(f"[+] Found {len(unique)} {download_type} downloads")
+        return unique
+        
+    except Exception as e:
+        print(f"[!] Error scraping {download_type}: {e}")
+        return []
+
+# ---------------------------
+# Gallery Scraper
+# ---------------------------
+
+def scrape_gallery(url, gallery_name):
+    """Scrape gallery images (routines, schedules, etc.)"""
+    print(f"[*] Scraping {gallery_name} gallery...")
+    
+    try:
+        html = requests.get(url, headers=headers, timeout=10).text
+        soup = BeautifulSoup(html, "html.parser")
+        
+        images = []
+        
+        # Find all image elements
+        img_tags = soup.find_all("img")
+        
+        for img in img_tags:
+            src = img.get("src")
+            alt = img.get("alt", "Image")
+            
+            if src and not any(skip in src.lower() for skip in ['logo', 'icon', 'banner']):
+                images.append({
+                    "title": clean_text(alt) if alt else f"{gallery_name} Image",
+                    "image_url": urljoin(BASE_URL, src),
+                    "category": gallery_name,
+                    "scraped_at": datetime.now(timezone.utc).isoformat()
+                })
+        
+        # Also check for gallery items/cards
+        gallery_items = soup.select(".gallery-item, .image-item, a[href*='image'], a[href*='.jpg'], a[href*='.png']")
+        
+        for item in gallery_items:
+            href = item.get("href", "")
+            title = clean_text(item.get_text())
+            
+            if any(ext in href.lower() for ext in ['.jpg', '.jpeg', '.png', '.gif']):
+                images.append({
+                    "title": title if title else f"{gallery_name} Image",
+                    "image_url": urljoin(BASE_URL, href),
+                    "category": gallery_name,
+                    "scraped_at": datetime.now(timezone.utc).isoformat()
+                })
+        
+        # Deduplicate
+        seen = set()
+        unique = []
+        for i in images:
+            if i["image_url"] not in seen:
+                seen.add(i["image_url"])
+                unique.append(i)
+        
+        print(f"[+] Found {len(unique)} {gallery_name} images")
+        return unique
+        
+    except Exception as e:
+        print(f"[!] Error scraping {gallery_name}: {e}")
+        return []
+
+# ---------------------------
+# Main Execution
 # ---------------------------
 
 def main():
-    """Main scraper function"""
-    try:
-        notices = scrape()
-        
-        print(f"[+] Final notice count: {len(notices)}")
-        for n in notices[:10]:
-            print("  -", n["title"])
-        
-        # Ensure folder exists
-        os.makedirs("data", exist_ok=True)
-        
-        # Wrap in response object to match Android app expectations
-        response = {
+    """Main scraper - scrapes everything"""
+    print("=" * 60)
+    print("MAC POKHARA COMPLETE SCRAPER")
+    print("=" * 60 + "\n")
+    
+    os.makedirs(OUTPUT_DIR, exist_ok=True)
+    
+    # Scrape all sections
+    notices = scrape_notices()
+    student_downloads = scrape_downloads(URLS["student_downloads"], "student")
+    general_downloads = scrape_downloads(URLS["general_downloads"], "general")
+    routine_images = scrape_gallery(URLS["gallery_routine"], "routine")
+    semester_images = scrape_gallery(URLS["gallery_semester"], "semester_plan")
+    
+    # Combine all downloads
+    all_downloads = student_downloads + general_downloads
+    all_gallery = routine_images + semester_images
+    
+    # Create final JSON structure
+    data = {
+        "notices": {
+            "items": notices,
+            "count": len(notices)
+        },
+        "downloads": {
+            "items": all_downloads,
+            "count": len(all_downloads),
+            "student_count": len(student_downloads),
+            "general_count": len(general_downloads)
+        },
+        "gallery": {
+            "items": all_gallery,
+            "count": len(all_gallery),
+            "routine_count": len(routine_images),
+            "semester_count": len(semester_images)
+        },
+        "last_updated": datetime.now(timezone.utc).isoformat(),
+        "total_items": len(notices) + len(all_downloads) + len(all_gallery)
+    }
+    
+    # Save individual files for app
+    with open(f"{OUTPUT_DIR}/notices.json", "w", encoding="utf-8") as f:
+        json.dump({
             "notices": notices,
-            "last_updated": datetime.now(timezone.utc).isoformat(),
+            "last_updated": data["last_updated"],
             "total_count": len(notices)
-        }
-        
-        # Save to JSON
-        with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
-            json.dump(response, f, indent=2, ensure_ascii=False)
-        
-        print(f"[+] Saved to {OUTPUT_FILE}")
-        
-    except Exception as e:
-        print("[ERROR]", e)
-        raise
+        }, f, indent=2, ensure_ascii=False)
+    
+    with open(f"{OUTPUT_DIR}/downloads.json", "w", encoding="utf-8") as f:
+        json.dump({
+            "downloads": all_downloads,
+            "last_updated": data["last_updated"],
+            "total_count": len(all_downloads)
+        }, f, indent=2, ensure_ascii=False)
+    
+    with open(f"{OUTPUT_DIR}/gallery.json", "w", encoding="utf-8") as f:
+        json.dump({
+            "gallery": all_gallery,
+            "last_updated": data["last_updated"],
+            "total_count": len(all_gallery)
+        }, f, indent=2, ensure_ascii=False)
+    
+    # Save combined file
+    with open(f"{OUTPUT_DIR}/all_data.json", "w", encoding="utf-8") as f:
+        json.dump(data, f, indent=2, ensure_ascii=False)
+    
+    # Print summary
+    print("\n" + "=" * 60)
+    print("SCRAPING COMPLETE!")
+    print("=" * 60)
+    print(f"Notices:          {len(notices)}")
+    print(f"Downloads:        {len(all_downloads)}")
+    print(f"  - Student:      {len(student_downloads)}")
+    print(f"  - General:      {len(general_downloads)}")
+    print(f"Gallery Images:   {len(all_gallery)}")
+    print(f"  - Routines:     {len(routine_images)}")
+    print(f"  - Semester:     {len(semester_images)}")
+    print(f"\nTotal items:      {data['total_items']}")
+    print("=" * 60)
+    print(f"\n💾 Saved to {OUTPUT_DIR}/")
 
 if __name__ == "__main__":
     main()

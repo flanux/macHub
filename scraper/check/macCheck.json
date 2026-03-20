@@ -1,0 +1,65 @@
+{
+  "navigation": {
+    "About": "https://www.macpokhara.edu.np/",
+    "Institutional Overview": "https://www.macpokhara.edu.np/Home/readmore?id=afa9d86a-c55f-41d3-9205-44a069250540",
+    "Objective": "https://www.macpokhara.edu.np/Home/readmore?id=7bbe175a-a47f-43a6-948e-ab8ac31327c4",
+    "Campus Rules": "https://www.macpokhara.edu.np/Home/readmore?id=2701b4f3-a59d-4875-9b8f-3ce71d6d62e9",
+    "Message From Director": "https://www.macpokhara.edu.np/Home/readmore?id=31214297-5bf0-4a76-a9ec-730dd8ffbcc0",
+    "Program": "https://www.macpokhara.edu.np/",
+    "B.Sc.CSIT": "https://www.macpokhara.edu.np/Staffs/Show?Role=Teaching&pid=cf0dfc1c-6564-44d9-9ae1-ede48ee50a9b",
+    "BBS": "https://www.macpokhara.edu.np/MyPrograms/readmore?id=9682467b-99b3-4d36-ab92-8869bdac7478",
+    "+2 Computer Science": "https://www.macpokhara.edu.np/MyPrograms/readmore?id=139ce0af-1efc-43cc-9060-7f353bc370ad",
+    "+2 Science": "https://www.macpokhara.edu.np/MyPrograms/readmore?id=cc64d1dc-5c26-42fa-837b-6ed5c9651061",
+    "+2 Management": "https://www.macpokhara.edu.np/MyPrograms/readmore?id=9632ad44-08b3-45ba-b302-d40e5923bfd6",
+    "Admission": "https://www.macpokhara.edu.np/",
+    "Admission Procedure(Bsc.CSIT)": "https://www.macpokhara.edu.np/Admissions/Detail?id=9807737e-2528-41f9-855c-9d72521abd40",
+    "Pre-Registration Open(BBS and B.Sc.CSIT)": "https://www.macpokhara.edu.np/Admissions/Detail?id=49f30293-8850-4f03-9039-4d4f52452aa0",
+    "Admission Requirement(BBS)": "https://www.macpokhara.edu.np/Admissions/Detail?id=643410d5-5539-427c-985b-034df36ec016",
+    "Our Team": "https://www.macpokhara.edu.np/#Team",
+    "Management-Committee": "https://www.macpokhara.edu.np/Staffs/Show?Role=Management-Committee",
+    "Administrative": "https://www.macpokhara.edu.np/Staffs/Show?Role=Administrative",
+    "Teaching": "https://www.macpokhara.edu.np/",
+    "Gallery": "https://www.macpokhara.edu.np/",
+    "B.Sc.CSIT Batch Photos": "https://www.macpokhara.edu.np/Gallery/ShowGalleryGeneral?id=c2c8f553-ba9e-45eb-921c-c3fa29cce85f",
+    "Semester Plan": "https://www.macpokhara.edu.np/Gallery/ShowGalleryGeneral?id=eb7b0844-c6ef-4ff3-84e2-a8078d0f68d9",
+    "Class Routine": "https://www.macpokhara.edu.np/Gallery/ShowGalleryGeneral?id=4affa6d7-c154-4b8f-a2b6-d8efff49f659",
+    "Browse Gallery": "https://www.macpokhara.edu.np/Gallery/BrowseGallery",
+    "Download": "https://www.macpokhara.edu.np/",
+    "Student Downloads": "https://www.macpokhara.edu.np/Downloads/ShowStudentDownloadDetails",
+    "General Downloads": "https://www.macpokhara.edu.np/Downloads/ShowOtherDownloadDetails",
+    "ALL": "https://www.macpokhara.edu.np/#nav-all",
+    "Examination": "https://www.macpokhara.edu.np/#nav-Examination",
+    "General": "https://www.macpokhara.edu.np/#nav-General",
+    "IOST": "https://www.macpokhara.edu.np/#nav-IOST"
+  },
+  "downloads": [
+    {
+      "text": "Download",
+      "url": "https://www.macpokhara.edu.np/"
+    },
+    {
+      "text": "Student Downloads",
+      "url": "https://www.macpokhara.edu.np/Downloads/ShowStudentDownloadDetails"
+    },
+    {
+      "text": "General Downloads",
+      "url": "https://www.macpokhara.edu.np/Downloads/ShowOtherDownloadDetails"
+    },
+    {
+      "text": "Student Downloads",
+      "url": "https://www.macpokhara.edu.np/Downloads/ShowStudentDownloadDetails"
+    },
+    {
+      "text": "General Downloads",
+      "url": "https://www.macpokhara.edu.np/Downloads/ShowOtherDownloadDetails"
+    }
+  ],
+  "files": [
+    {
+      "text": "BBS Brochure-2078",
+      "url": "http://macpokhara.edu.np/files/c071b477-4af6-410c-82fc-abed81c7852c202218142841.pdf",
+      "type": "PDF"
+    }
+  ],
+  "timestamp": "2026-03-20 09:36:58.860077"
+}
