@@ -102,11 +102,11 @@ def scrape_notices():
     return unique[::-1]
 
 # ---------------------------
-# Downloads Scraper
+# Downloads Scraper (FIXED)
 # ---------------------------
 
 def scrape_downloads(url, download_type):
-    """Scrape download pages (student/general)"""
+    """Scrape download pages - IMPROVED title extraction"""
     print(f"[*] Scraping {download_type} downloads...")
     
     try:
@@ -115,45 +115,53 @@ def scrape_downloads(url, download_type):
         
         downloads = []
         
-        # Look for download links (PDFs, docs, etc.)
-        links = soup.find_all("a", href=True)
+        # Strategy 1: Look for file links with proper titles
+        # Try finding parent containers with both title and link
+        containers = soup.select("div, li, tr")
         
-        for link in links:
+        for container in containers:
+            link = container.find("a", href=lambda x: x and any(ext in x.lower() for ext in ['.pdf', '.doc', '.docx', '.xls', '.xlsx', '.zip']))
+            
+            if not link:
+                continue
+            
             href = link.get("href")
-            title = clean_text(link.get_text())
             
-            # Check if it's a file link
-            if any(ext in href.lower() for ext in ['.pdf', '.doc', '.docx', '.xls', '.xlsx', '.zip']):
-                file_type = href.split('.')[-1].upper()
-                
-                downloads.append({
-                    "title": title if title else f"Download {file_type}",
-                    "url": urljoin(BASE_URL, href),
-                    "type": file_type,
-                    "category": download_type,
-                    "scraped_at": datetime.now(timezone.utc).isoformat()
-                })
-        
-        # Also check for download cards/sections
-        download_cards = soup.select(".download-item, .file-item, .card")
-        for card in download_cards:
-            title_elem = card.select_one("h3, h4, .title, .name")
-            link_elem = card.select_one("a[href]")
+            # Try multiple strategies to get title
+            title = None
             
-            if title_elem and link_elem:
-                title = clean_text(title_elem.get_text())
-                href = link_elem.get("href")
-                
-                if href and any(ext in href.lower() for ext in ['.pdf', '.doc', '.docx', '.xls', '.xlsx', '.zip']):
-                    file_type = href.split('.')[-1].upper()
-                    
-                    downloads.append({
-                        "title": title,
-                        "url": urljoin(BASE_URL, href),
-                        "type": file_type,
-                        "category": download_type,
-                        "scraped_at": datetime.now(timezone.utc).isoformat()
-                    })
+            # 1. Check if link has meaningful text
+            link_text = clean_text(link.get_text())
+            if link_text and len(link_text) > 5 and "download" not in link_text.lower():
+                title = link_text
+            
+            # 2. Look for nearby heading or label
+            if not title:
+                heading = container.find(["h3", "h4", "h5", "strong", "b", "span"])
+                if heading:
+                    heading_text = clean_text(heading.get_text())
+                    if len(heading_text) > 5:
+                        title = heading_text
+            
+            # 3. Extract filename from URL as last resort
+            if not title:
+                filename = href.split('/')[-1].replace('%20', ' ')
+                if '.' in filename:
+                    title = filename.rsplit('.', 1)[0]  # Remove extension
+            
+            # 4. Ultimate fallback
+            if not title or len(title) < 3:
+                title = f"Download File"
+            
+            file_type = href.split('.')[-1].upper() if '.' in href else 'FILE'
+            
+            downloads.append({
+                "title": title,
+                "url": urljoin(BASE_URL, href),
+                "type": file_type,
+                "category": download_type,
+                "scraped_at": datetime.now(timezone.utc).isoformat()
+            })
         
         # Deduplicate
         seen = set()
@@ -171,11 +179,11 @@ def scrape_downloads(url, download_type):
         return []
 
 # ---------------------------
-# Gallery Scraper
+# Gallery Scraper (FIXED)
 # ---------------------------
 
 def scrape_gallery(url, gallery_name):
-    """Scrape gallery images (routines, schedules, etc.)"""
+    """Scrape gallery images - IMPROVED filtering"""
     print(f"[*] Scraping {gallery_name} gallery...")
     
     try:
@@ -187,32 +195,72 @@ def scrape_gallery(url, gallery_name):
         # Find all image elements
         img_tags = soup.find_all("img")
         
+        # STRICT filtering to exclude logos/icons/banners
+        EXCLUDE_KEYWORDS = ['logo', 'icon', 'banner', 'header', 'footer', 'nav', 'menu', 
+                           'facebook', 'twitter', 'instagram', 'whatsapp', 'symbol']
+        
         for img in img_tags:
-            src = img.get("src")
-            alt = img.get("alt", "Image")
+            src = img.get("src", "")
+            alt = img.get("alt", "").lower()
             
-            if src and not any(skip in src.lower() for skip in ['logo', 'icon', 'banner']):
-                images.append({
-                    "title": clean_text(alt) if alt else f"{gallery_name} Image",
-                    "image_url": urljoin(BASE_URL, src),
-                    "category": gallery_name,
-                    "scraped_at": datetime.now(timezone.utc).isoformat()
-                })
-        
-        # Also check for gallery items/cards
-        gallery_items = soup.select(".gallery-item, .image-item, a[href*='image'], a[href*='.jpg'], a[href*='.png']")
-        
-        for item in gallery_items:
-            href = item.get("href", "")
-            title = clean_text(item.get_text())
+            # Skip if no src
+            if not src:
+                continue
             
-            if any(ext in href.lower() for ext in ['.jpg', '.jpeg', '.png', '.gif']):
-                images.append({
-                    "title": title if title else f"{gallery_name} Image",
-                    "image_url": urljoin(BASE_URL, href),
-                    "category": gallery_name,
-                    "scraped_at": datetime.now(timezone.utc).isoformat()
-                })
+            # Skip if contains excluded keywords in URL or alt text
+            if any(keyword in src.lower() for keyword in EXCLUDE_KEYWORDS):
+                continue
+            if any(keyword in alt for keyword in EXCLUDE_KEYWORDS):
+                continue
+            
+            # Skip very small images (likely icons)
+            width = img.get("width", "")
+            height = img.get("height", "")
+            if width and height:
+                try:
+                    if int(width) < 100 or int(height) < 100:
+                        continue
+                except:
+                    pass
+            
+            # Get a better title
+            title = clean_text(img.get("alt", ""))
+            if not title or len(title) < 3:
+                # Try to get title from parent link
+                parent_link = img.find_parent("a")
+                if parent_link:
+                    title = clean_text(parent_link.get("title", ""))
+            
+            if not title or len(title) < 3:
+                title = f"{gallery_name.replace('_', ' ').title()} Image"
+            
+            images.append({
+                "title": title,
+                "image_url": urljoin(BASE_URL, src),
+                "category": gallery_name,
+                "scraped_at": datetime.now(timezone.utc).isoformat()
+            })
+        
+        # Also check for gallery items/cards with links to images
+        gallery_links = soup.select("a[href*='.jpg'], a[href*='.jpeg'], a[href*='.png'], a[href*='.gif']")
+        
+        for link in gallery_links:
+            href = link.get("href", "")
+            
+            # Same filtering
+            if any(keyword in href.lower() for keyword in EXCLUDE_KEYWORDS):
+                continue
+            
+            title = clean_text(link.get_text())
+            if not title or len(title) < 3:
+                title = f"{gallery_name.replace('_', ' ').title()} Image"
+            
+            images.append({
+                "title": title,
+                "image_url": urljoin(BASE_URL, href),
+                "category": gallery_name,
+                "scraped_at": datetime.now(timezone.utc).isoformat()
+            })
         
         # Deduplicate
         seen = set()
@@ -236,7 +284,7 @@ def scrape_gallery(url, gallery_name):
 def main():
     """Main scraper - scrapes everything"""
     print("=" * 60)
-    print("MAC POKHARA COMPLETE SCRAPER")
+    print("MAC POKHARA COMPLETE SCRAPER v2")
     print("=" * 60 + "\n")
     
     os.makedirs(OUTPUT_DIR, exist_ok=True)

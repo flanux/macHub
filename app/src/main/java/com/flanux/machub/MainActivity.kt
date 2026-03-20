@@ -14,7 +14,7 @@ import com.flanux.machub.ui.theme.MACDashboardTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+        // Removed enableEdgeToEdge() - was causing status bar overlap
         
         setContent {
             MACDashboardTheme {
