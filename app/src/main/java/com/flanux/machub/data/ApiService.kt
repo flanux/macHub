@@ -9,7 +9,6 @@ interface ApiService {
     suspend fun getNotices(): NoticeResponse
     
     companion object {
-        // TODO: Replace USERNAME and REPO with your actual GitHub username and repo name
         private const val BASE_URL = "https://flanux.github.io/macHub/"
         
         fun create(): ApiService {
