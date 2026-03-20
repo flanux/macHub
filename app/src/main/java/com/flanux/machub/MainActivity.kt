@@ -8,9 +8,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
-import androidx.lifecycle.viewmodel.compose.viewModel
-import com.flanux.machub.ui.NoticeListScreen
-import com.flanux.machub.ui.NoticeViewModel
+import com.flanux.machub.navigation.MainScreen
 import com.flanux.machub.ui.theme.MACDashboardTheme
 
 class MainActivity : ComponentActivity() {
@@ -24,8 +22,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    val viewModel: NoticeViewModel = viewModel()
-                    NoticeListScreen(viewModel = viewModel)
+                    MainScreen()
                 }
             }
         }
