@@ -7,11 +7,17 @@ import okhttp3.OkHttpClient
 import okhttp3.Request
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
+import java.security.cert.X509Certificate
 import java.util.concurrent.TimeUnit
+import javax.net.ssl.SSLContext
+import javax.net.ssl.TrustManager
+import javax.net.ssl.X509TrustManager
 
 /**
  * TU Result Scraper - Device-side scraping from tuexam.edu.np
  * No backend needed - everything runs on the device
+ * 
+ * Note: SSL verification disabled because TU's certificate is expired
  */
 class TUResultScraper {
     
@@ -19,6 +25,22 @@ class TUResultScraper {
         .connectTimeout(15, TimeUnit.SECONDS)
         .readTimeout(15, TimeUnit.SECONDS)
         .followRedirects(true)
+        .apply {
+            // Bypass SSL verification (TU's certificate is expired)
+            val trustAllCerts = arrayOf<TrustManager>(
+                object : X509TrustManager {
+                    override fun checkClientTrusted(chain: Array<X509Certificate>, authType: String) {}
+                    override fun checkServerTrusted(chain: Array<X509Certificate>, authType: String) {}
+                    override fun getAcceptedIssuers(): Array<X509Certificate> = arrayOf()
+                }
+            )
+            
+            val sslContext = SSLContext.getInstance("TLS")
+            sslContext.init(null, trustAllCerts, java.security.SecureRandom())
+            
+            sslSocketFactory(sslContext.socketFactory, trustAllCerts[0] as X509TrustManager)
+            hostnameVerifier { _, _ -> true }
+        }
         .build()
     
     // Try multiple TU portal URLs (fallback support)
