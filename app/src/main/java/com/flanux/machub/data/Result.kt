@@ -31,7 +31,7 @@ data class StudentResult(
     val year: String = "",
     
     @SerializedName("fetched_at")
-    val fetchedAt: String = ""
+    val fetchedAt: Long = System.currentTimeMillis()  // Timestamp for caching
 )
 
 data class SubjectResult(
@@ -60,7 +60,7 @@ data class SubjectResult(
 data class ResultRequest(
     val symbolNumber: String,
     val dateOfBirth: String,  // Format: YYYY-MM-DD
-    val semester: Int
+    val semester: Int? = null
 )
 
 data class ResultResponse(

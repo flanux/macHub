@@ -73,46 +73,42 @@ class ResultViewModel : ViewModel() {
             _uiState.value = UiState.Loading
             
             try {
-                // TODO: Call result checker API/scraper
-                // For now, show demo data
-                kotlinx.coroutines.delay(2000)
+                // Use device-side TU scraper (no backend needed!)
+                val scraper = com.flanux.machub.data.TUResultScraper()
                 
-                // Demo result
-                val demoResult = StudentResult(
+                // Fetch result from TU portal
+                val response = scraper.fetchResult(
                     symbolNumber = _symbolNumber.value,
-                    name = "Student Name",
-                    semester = "${_selectedSemester.value}",
-                    sgpa = "3.75",
-                    cgpa = "3.68",
-                    status = "Pass",
-                    year = "2079",
-                    subjects = listOf(
-                        com.flanux.machub.data.SubjectResult(
-                            code = "CSC251",
-                            name = "Data Structure and Algorithm",
-                            creditHour = "3",
-                            gradePoint = "3.7",
-                            grade = "A-",
-                            marks = "85"
-                        ),
-                        com.flanux.machub.data.SubjectResult(
-                            code = "CSC252",
-                            name = "Operating System",
-                            creditHour = "3",
-                            gradePoint = "4.0",
-                            grade = "A",
-                            marks = "92"
-                        )
-                    )
+                    dateOfBirth = _dateOfBirth.value,
+                    semester = _selectedSemester.value
                 )
                 
-                _uiState.value = UiState.Success(demoResult)
+                if (response.success && response.result != null) {
+                    _uiState.value = UiState.Success(response.result)
+                } else {
+                    _uiState.value = UiState.Error(
+                        response.message ?: "Failed to fetch result. Please check your credentials."
+                    )
+                }
+                
+            } catch (e: java.net.UnknownHostException) {
+                _uiState.value = UiState.Error(
+                    "No internet connection. Please check your network."
+                )
+                
+            } catch (e: java.net.SocketTimeoutException) {
+                _uiState.value = UiState.Error(
+                    "Connection timeout. TU portal is slow. Please try again."
+                )
                 
             } catch (e: Exception) {
-                _uiState.value = UiState.Error(e.message ?: "Failed to fetch result")
+                _uiState.value = UiState.Error(
+                    e.message ?: "An error occurred. Please try again."
+                )
             }
         }
     }
+
     
     fun resetForm() {
         _uiState.value = UiState.Form
