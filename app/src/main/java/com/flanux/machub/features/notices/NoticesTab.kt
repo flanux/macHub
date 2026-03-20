@@ -29,26 +29,26 @@ import kotlinx.coroutines.launch
 // ViewModel
 class NoticeViewModel : ViewModel() {
     private val api = ApiService.create()
-    
+
     private val _uiState = MutableStateFlow<UiState>(UiState.Loading)
     val uiState: StateFlow<UiState> = _uiState
-    
+
     private val _selectedCategory = MutableStateFlow<String?>(null)
     val selectedCategory: StateFlow<String?> = _selectedCategory
-    
+
     private val _selectedBatch = MutableStateFlow<String?>(null)
     val selectedBatch: StateFlow<String?> = _selectedBatch
-    
+
     sealed class UiState {
         object Loading : UiState()
         data class Success(val notices: List<Notice>) : UiState()
         data class Error(val message: String) : UiState()
     }
-    
+
     init {
         loadNotices()
     }
-    
+
     fun loadNotices() {
         viewModelScope.launch {
             _uiState.value = UiState.Loading
@@ -60,11 +60,11 @@ class NoticeViewModel : ViewModel() {
             }
         }
     }
-    
+
     fun setCategory(category: String?) {
         _selectedCategory.value = category
     }
-    
+
     fun setBatch(batch: String?) {
         _selectedBatch.value = batch
     }
@@ -77,7 +77,7 @@ fun NoticesTab(viewModel: NoticeViewModel) {
     val uiState by viewModel.uiState.collectAsState()
     val selectedCategory by viewModel.selectedCategory.collectAsState()
     val selectedBatch by viewModel.selectedBatch.collectAsState()
-    
+
     Scaffold(
         topBar = {
             TopAppBar(
@@ -112,7 +112,7 @@ fun NoticesTab(viewModel: NoticeViewModel) {
                         (selectedCategory == null || notice.category == selectedCategory) &&
                         (selectedBatch == null || notice.batch == selectedBatch)
                     }
-                    
+
                     FilterSection(
                         categories = state.notices.map { it.category }.distinct(),
                         batches = state.notices.mapNotNull { it.batch }.distinct().sorted(),
@@ -121,7 +121,7 @@ fun NoticesTab(viewModel: NoticeViewModel) {
                         onCategoryChange = { viewModel.setCategory(it) },
                         onBatchChange = { viewModel.setBatch(it) }
                     )
-                    
+
                     NoticeList(notices = filteredNotices)
                 }
             }
@@ -140,9 +140,9 @@ fun FilterSection(
 ) {
     Column(
         modifier = Modifier
-            .fillMaxWidth()
-            .background(MaterialTheme.colorScheme.surface)
-            .padding(16.dp),
+        .fillMaxWidth()
+        .background(MaterialTheme.colorScheme.surface)
+        .padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
         Text(
@@ -150,7 +150,7 @@ fun FilterSection(
             style = MaterialTheme.typography.labelMedium,
             color = MaterialTheme.colorScheme.onSurfaceVariant
         )
-        
+
         LazyRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
             item {
                 FilterChip(
@@ -167,13 +167,13 @@ fun FilterSection(
                 )
             }
         }
-        
+
         Text(
             "Batch",
             style = MaterialTheme.typography.labelMedium,
             color = MaterialTheme.colorScheme.onSurfaceVariant
         )
-        
+
         LazyRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
             item {
                 FilterChip(
@@ -209,21 +209,21 @@ fun NoticeList(notices: List<Notice>) {
 @Composable
 fun NoticeCard(notice: Notice) {
     val context = LocalContext.current
-    
+
     Card(
         modifier = Modifier
-            .fillMaxWidth()
-            .clickable {
-                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(notice.url))
-                context.startActivity(intent)
-            },
+        .fillMaxWidth()
+        .clickable {
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(notice.url))
+            context.startActivity(intent)
+        },
         shape = RoundedCornerShape(12.dp),
         elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
     ) {
         Column(
             modifier = Modifier
-                .fillMaxWidth()
-                .padding(16.dp),
+            .fillMaxWidth()
+            .padding(16.dp),
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             Row(
@@ -232,7 +232,7 @@ fun NoticeCard(notice: Notice) {
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 CategoryBadge(category = notice.category)
-                
+
                 if (notice.batch != null) {
                     Surface(
                         color = MaterialTheme.colorScheme.secondaryContainer,
@@ -247,13 +247,13 @@ fun NoticeCard(notice: Notice) {
                     }
                 }
             }
-            
+
             Text(
                 text = notice.title,
                 style = MaterialTheme.typography.bodyLarge,
                 fontWeight = FontWeight.Medium
             )
-            
+
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween,
@@ -264,7 +264,7 @@ fun NoticeCard(notice: Notice) {
                     style = MaterialTheme.typography.labelSmall,
                     color = MaterialTheme.colorScheme.primary
                 )
-                
+
                 Icon(
                     Icons.Default.ArrowForward,
                     contentDescription = null,
@@ -283,7 +283,7 @@ fun CategoryBadge(category: String) {
         "exam" -> MaterialTheme.colorScheme.tertiaryContainer to MaterialTheme.colorScheme.onTertiaryContainer
         else -> MaterialTheme.colorScheme.primaryContainer to MaterialTheme.colorScheme.onPrimaryContainer
     }
-    
+
     Surface(
         color = bgColor,
         shape = RoundedCornerShape(4.dp)
