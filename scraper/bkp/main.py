@@ -125,16 +125,9 @@ def main():
         # Ensure folder exists
         os.makedirs("data", exist_ok=True)
         
-        # Wrap in response object to match Android app expectations
-        response = {
-            "notices": notices,
-            "last_updated": datetime.now(timezone.utc).isoformat(),
-            "total_count": len(notices)
-        }
-        
         # Save to JSON
         with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
-            json.dump(response, f, indent=2, ensure_ascii=False)
+            json.dump(notices, f, indent=2, ensure_ascii=False)
         
         print(f"[+] Saved to {OUTPUT_FILE}")
         
