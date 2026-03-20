@@ -464,7 +464,7 @@ fun SubjectCard(subject: com.flanux.machub.data.SubjectResult) {
                         style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
-                </Column>
+                } 
                 
                 Surface(
                     color = when (subject.grade) {
