@@ -13,6 +13,8 @@ import com.flanux.machub.features.downloads.DownloadsTab
 import com.flanux.machub.features.downloads.DownloadViewModel
 import com.flanux.machub.features.gallery.GalleryTab
 import com.flanux.machub.features.gallery.GalleryViewModel
+import com.flanux.machub.features.results.ResultsTab
+import com.flanux.machub.features.results.ResultViewModel
 import com.flanux.machub.features.info.InfoTab
 
 @Composable
@@ -23,6 +25,7 @@ fun MainScreen() {
     val noticeViewModel: NoticeViewModel = viewModel()
     val downloadViewModel: DownloadViewModel = viewModel()
     val galleryViewModel: GalleryViewModel = viewModel()
+    val resultViewModel: ResultViewModel = viewModel()
     
     Scaffold(
         bottomBar = {
@@ -46,10 +49,16 @@ fun MainScreen() {
                     onClick = { selectedTab = 2 }
                 )
                 NavigationBarItem(
-                    icon = { Icon(Icons.Default.Info, "Info") },
-                    label = { Text("Info") },
+                    icon = { Icon(Icons.Default.Assignment, "Results") },
+                    label = { Text("Results") },
                     selected = selectedTab == 3,
                     onClick = { selectedTab = 3 }
+                )
+                NavigationBarItem(
+                    icon = { Icon(Icons.Default.Info, "Info") },
+                    label = { Text("Info") },
+                    selected = selectedTab == 4,
+                    onClick = { selectedTab = 4 }
                 )
             }
         }
@@ -59,7 +68,8 @@ fun MainScreen() {
                 0 -> NoticesTab(viewModel = noticeViewModel)
                 1 -> DownloadsTab(viewModel = downloadViewModel)
                 2 -> GalleryTab(viewModel = galleryViewModel)
-                3 -> InfoTab()
+                3 -> ResultsTab(viewModel = resultViewModel)
+                4 -> InfoTab()
             }
         }
     }

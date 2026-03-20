@@ -118,7 +118,7 @@ fun InfoTab() {
                         )
                         Spacer(Modifier.height(8.dp))
                         Text(
-                            "An unofficial student app for MAC Pokhara.",
+                            "An unofficial student app for MAC Pokhara. Built with ❤️ by students, for students.",
                             style = MaterialTheme.typography.bodySmall,
                             color = MaterialTheme.colorScheme.onSurfaceVariant
                         )
