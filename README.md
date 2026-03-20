@@ -2,7 +2,7 @@
 
 A clean, student-focused Android app for MAC Pokhara notices. No more scrolling through the repetitive college website.
 
-## 🎯 Features
+##  Features
 
 - **Clean UI**: No intro pages, just your notices
 - **Smart Filtering**: Filter by category (exam, result, assignment, etc.) and batch (2079, 2080, etc.)
@@ -10,7 +10,7 @@ A clean, student-focused Android app for MAC Pokhara notices. No more scrolling 
 - **Auto-Updated**: Scraper runs every 6 hours via GitHub Actions
 - **Fast**: Loads instantly, no website bloat
 
-## 🏗️ Architecture
+##  Architecture
 
 ```
 ┌─────────────────┐
@@ -31,7 +31,7 @@ A clean, student-focused Android app for MAC Pokhara notices. No more scrolling 
     └──────────┘
 ```
 
-## 🚀 Setup
+##  Setup
 
 ### 1. Fork/Clone this repo
 
@@ -97,7 +97,7 @@ git push origin main
 - Or manually: **Actions** → **Build and Release APK** → **Run workflow**
 - Download APK from **Releases** or **Artifacts**
 
-## 🔧 Local Development
+##  Local Development
 
 ### Test scraper locally:
 
@@ -128,14 +128,14 @@ for link in soup.select("div.notice-board a"):
 3. GitHub Actions builds the APK
 4. Download and install on your phone
 
-## 📱 Build Manually (if needed)
+##  Build Manually (if needed)
 
 ```bash
 ./gradlew assembleDebug
 # APK at: app/build/outputs/apk/debug/app-debug.apk
 ```
 
-## 🐛 Troubleshooting
+##  Troubleshooting
 
 ### No notices showing in app
 
@@ -182,7 +182,7 @@ mac-dashboard/
     └── build-apk.yml     # Builds on push
 ```
 
-## 🎨 Customization
+##  Customization
 
 ### Change scraper frequency
 
@@ -201,13 +201,9 @@ Edit `scraper/main.py` → `classify_notice()` function
 
 Edit `app/src/main/java/com/flanux/macdashboard/ui/theme/Theme.kt`
 
-## 📄 License
+##  License
 
 MIT - Do whatever you want with this
-
-## 🙏 Credits
-
-Built by a student tired of clicking through 10 pages to find exam notices.
 
 ---
 
