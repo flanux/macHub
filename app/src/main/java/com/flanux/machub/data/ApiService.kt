@@ -8,6 +8,12 @@ interface ApiService {
     @GET("data/notices.json")
     suspend fun getNotices(): NoticeResponse
     
+    @GET("data/downloads.json")
+    suspend fun getDownloads(): DownloadResponse
+    
+    @GET("data/gallery.json")
+    suspend fun getGallery(): GalleryResponse
+    
     companion object {
         private const val BASE_URL = "https://flanux.github.io/macHub/"
         
