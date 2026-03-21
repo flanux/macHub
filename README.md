@@ -1,210 +1,165 @@
-# MAC Dashboard
+# macHub - MAC Pokhara Student Hub
 
-A clean, student-focused Android app for MAC Pokhara notices. No more scrolling through the repetitive college website.
+Unofficial Android app for Mount Annapurna Campus (MAC) Pokhara students. Get instant access to notices, downloads, news, and gallery - all scraped from the official MAC website.
 
-##  Features
+## Features
 
-- **Clean UI**: No intro pages, just your notices
-- **Smart Filtering**: Filter by category (exam, result, assignment, etc.) and batch (2079, 2080, etc.)
-- **Offline-First**: Cached data works without internet
-- **Auto-Updated**: Scraper runs every 6 hours via GitHub Actions
-- **Fast**: Loads instantly, no website bloat
+✅ **Notices** - Exam notices, IOST updates, general announcements with filtering by category, batch, and semester  
+✅ **Downloads** - E-Books, Notes, Syllabus, Question Collections organized by semester  
+✅ **News & Events** - Latest workshops, programs, and college events with images  
+✅ **Gallery** - Photo albums and WebView links for routines/semester plans  
+✅ **Smart Filtering** - Filter by batch (2077, 2078, 2079, 2080), semester, category  
+✅ **Attachment Support** - Direct links to PDFs, Google Drive, SharePoint folders  
+✅ **Offline-First** - All data bundled in the app, no internet required for browsing
 
-##  Architecture
+## Project Structure
 
 ```
-┌─────────────────┐
-│  MAC Website    │
-└────────┬────────┘
-         │
-    ┌────▼─────┐
-    │ Scraper  │ (GitHub Actions - runs every 6h)
-    └────┬─────┘
-         │
-    ┌────▼─────┐
-    │ JSON API │ (GitHub Pages)
-    └────┬─────┘
-         │
-    ┌────▼─────┐
-    │ Android  │
-    │   App    │
-    └──────────┘
+macHub/
+├── app/
+│   ├── src/main/
+│   │   ├── java/com/flanux/machub/
+│   │   │   ├── data/              # Data models & repository
+│   │   │   ├── features/          # Feature modules (notices, downloads, etc.)
+│   │   │   ├── navigation/        # Bottom nav & routing
+│   │   │   ├── ui/theme/          # Material 3 theming
+│   │   │   └── MainActivity.kt
+│   │   ├── assets/data/           # Scraped JSON files
+│   │   └── res/                   # Resources
+│   └── build.gradle.kts
+├── scraper/                       # Python scraper (separate)
+└── data/                          # Scraped JSON output
 ```
 
-##  Setup
+## Setup & Build
 
-### 1. Fork/Clone this repo
+### Prerequisites
+- Android Studio Hedgehog (2023.1.1) or later
+- JDK 17
+- Gradle 8.2
+- Kotlin 1.9.10
 
-```bash
-git clone https://github.com/YOUR_USERNAME/mac-dashboard.git
-cd mac-dashboard
-```
+### Build Steps
 
-### 2. Update API endpoint
-
-Edit `app/src/main/java/com/flanux/macdashboard/data/ApiService.kt`:
-
-```kotlin
-// Replace with your actual GitHub username and repo name
-private const val BASE_URL = "https://YOUR_USERNAME.github.io/mac-dashboard/"
-```
-
-### 3. Enable GitHub Pages
-
-- Go to repo **Settings** → **Pages**
-- Source: **Deploy from a branch**
-- Branch: **main** / **root**
-- Save
-
-### 4. Set up signing (for release builds)
-
-Create these GitHub Secrets in **Settings** → **Secrets and variables** → **Actions**:
-
-```bash
-# Generate keystore first (one-time setup):
-keytool -genkey -v -keystore release.keystore -alias key0 -keyalg RSA -keysize 2048 -validity 10000
-
-# Convert to base64:
-base64 release.keystore > keystore.txt
-
-# Then add these secrets:
-KEYSTORE_BASE64=<paste contents of keystore.txt>
-KEYSTORE_PASSWORD=<your password>
-KEY_ALIAS=key0
-KEY_PASSWORD=<your key password>
-```
-
-**Don't have a keystore?** The workflow will build a debug APK automatically.
-
-### 5. Push to GitHub
-
-```bash
-git add .
-git commit -m "Initial commit"
-git push origin main
-```
-
-### 6. Trigger workflows
-
-**Scraper:**
-- Go to **Actions** → **Scrape MAC Notices**
-- Click **Run workflow**
-- Wait ~1 minute
-- Check `data/notices.json` is created
-
-**APK Build:**
-- Automatically triggers on push
-- Or manually: **Actions** → **Build and Release APK** → **Run workflow**
-- Download APK from **Releases** or **Artifacts**
-
-##  Local Development
-
-### Test scraper locally:
-
-```bash
-cd scraper
-pip install -r requirements.txt
-python main.py
-```
-
-Check `data/notices.json` to verify output.
-
-### Refine selectors:
-
-The scraper uses generic selectors. You'll need to inspect MAC's HTML and update `scraper/main.py`:
-
-```python
-# Example: if notices are in a specific div
-for link in soup.select("div.notice-board a"):
-    # ...
-```
-
-### Android development:
-
-**You don't need Android Studio locally!** Just:
-
-1. Edit code in any text editor
-2. Push to GitHub
-3. GitHub Actions builds the APK
-4. Download and install on your phone
-
-##  Build Manually (if needed)
-
-```bash
-./gradlew assembleDebug
-# APK at: app/build/outputs/apk/debug/app-debug.apk
-```
-
-##  Troubleshooting
-
-### No notices showing in app
-
-1. Check if `data/notices.json` exists in repo
-2. Verify GitHub Pages is enabled and live
-3. Check API URL in `ApiService.kt` matches your GitHub Pages URL
-4. Open the JSON URL in browser to confirm it's accessible
-
-### Scraper not finding notices
-
-1. Run scraper locally and check output
-2. Inspect MAC website HTML (right-click → Inspect)
-3. Update CSS selectors in `scraper/main.py`
-4. Common patterns:
-   ```python
-   soup.select(".notice-board a")  # class selector
-   soup.select("#notices a")        # id selector
-   soup.select("div.content a")     # nested selector
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/flanux/macHub.git
+   cd macHub
    ```
 
-### APK build fails
+2. **Open in Android Studio**
+   - Open Android Studio
+   - Select "Open" and navigate to the project directory
+   - Wait for Gradle sync to complete
 
-1. Check if all secrets are set correctly
-2. For debug builds, keystore is optional
-3. Check GitHub Actions logs for errors
+3. **Build the APK**
+   - **Debug build**: `./gradlew assembleDebug`
+   - **Release build**: `./gradlew assembleRelease`
+   - Output: `app/build/outputs/apk/`
 
-## 📂 Project Structure
+4. **Run on device/emulator**
+   - Connect device or start emulator
+   - Click "Run" in Android Studio or:
+   ```bash
+   ./gradlew installDebug
+   ```
 
+### Updating Data
+
+The app reads JSON files from `app/src/main/assets/data/`. To update:
+
+1. **Run the scraper** (in `scraper/` directory):
+   ```bash
+   cd scraper
+   pip install -r requirements.txt
+   python main.py
+   ```
+
+2. **Copy fresh data**:
+   ```bash
+   cp data/*.json app/src/main/assets/data/
+   ```
+
+3. **Rebuild the app**:
+   ```bash
+   ./gradlew assembleRelease
+   ```
+
+## Data Files
+
+The app uses these JSON files (scraped from macpokhara.edu.np):
+
+- `notices.json` - Notice details with attachments, body content, batch/semester metadata
+- `downloads.json` - Student resources (E-Books, Notes, Syllabus, Questions)
+- `news.json` - Events, workshops, programs with thumbnails
+- `gallery.json` - Photo albums + WebView links
+
+## Architecture
+
+- **Pattern**: MVVM (Model-View-ViewModel)
+- **UI**: Jetpack Compose with Material 3
+- **Data**: JSON loaded from assets via Gson
+- **Navigation**: Bottom navigation with 5 tabs
+- **State**: Kotlin Flows + ViewModel
+
+## Key Dependencies
+
+```kotlin
+// Compose & Material 3
+androidx.compose.material3
+androidx.lifecycle:lifecycle-viewmodel-compose
+
+// JSON parsing
+com.google.code.gson:gson
+
+// Image loading
+io.coil-kt:coil-compose
+
+// Network (for future API support)
+com.squareup.retrofit2:retrofit
+com.squareup.okhttp3:okhttp
 ```
-mac-dashboard/
-├── scraper/              # Python scraper
-│   ├── main.py
-│   └── requirements.txt
-├── data/                 # Generated JSON (auto-updated)
-│   └── notices.json
-├── app/                  # Android app
-│   ├── src/main/java/com/flanux/macdashboard/
-│   │   ├── MainActivity.kt
-│   │   ├── data/         # Models, API, Repository
-│   │   └── ui/           # Compose screens, ViewModels
-│   └── build.gradle.kts
-└── .github/workflows/    # CI/CD
-    ├── scrape.yml        # Runs every 6h
-    └── build-apk.yml     # Builds on push
-```
 
-##  Customization
+## ProGuard Configuration
 
-### Change scraper frequency
+Release builds use R8 minification. ProGuard rules are configured in `app/proguard-rules.pro` to preserve:
+- Gson annotations & reflection
+- Data classes
+- Retrofit interfaces
+- OkHttp components
 
-Edit `.github/workflows/scrape.yml`:
+## Contributing
 
-```yaml
-schedule:
-  - cron: "0 */6 * * *"  # Change to your preferred schedule
-```
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit changes (`git commit -m 'Add amazing feature'`)
+4. Push to branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-### Add more categories
+## Scraper
 
-Edit `scraper/main.py` → `classify_notice()` function
+The scraper is a separate Python project that fetches data from the official MAC website. See `scraper/main.py` for implementation details.
 
-### Change app colors
+**Scraper features:**
+- Change detection (MD5 body hash)
+- Smart attachment labeling
+- Full pagination support
+- Batch/semester extraction
+- Failure logging
 
-Edit `app/src/main/java/com/flanux/macdashboard/ui/theme/Theme.kt`
+## License
 
-##  License
+MIT License - see LICENSE file for details.
 
-MIT - Do whatever you want with this
+## Disclaimer
+
+This is an **unofficial** student project and is not affiliated with Mount Annapurna Campus. All data is publicly available from macpokhara.edu.np.
+
+## Contact
+
+- GitHub: [@flanux](https://github.com/flanux)
+- Project: [macHub](https://github.com/flanux/macHub)
 
 ---
 
-**Note:** This is a student project. Not affiliated with MAC Pokhara.
+Built with ❤️ by students, for students.

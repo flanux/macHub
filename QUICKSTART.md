@@ -1,126 +1,162 @@
-# 🚀 QUICK START
+# macHub - Quick Start Guide
 
-Follow these steps in order:
+Get the app running in 5 minutes.
 
-## 1️⃣ Update the API URL (CRITICAL!)
+## 1. Prerequisites
 
-Open `app/src/main/java/com/flanux/macdashboard/data/ApiService.kt`
+Install these first:
+- **Android Studio** (Hedgehog or later) - [Download](https://developer.android.com/studio)
+- **JDK 17** - Usually bundled with Android Studio
 
-Change this line:
-```kotlin
-private const val BASE_URL = "https://USERNAME.github.io/REPO/"
-```
+## 2. Open Project
 
-To your actual GitHub Pages URL:
-```kotlin
-private const val BASE_URL = "https://YOUR_USERNAME.github.io/macHub/"
-```
-
-## 2️⃣ Enable GitHub Pages
-
-1. Push this repo to GitHub
-2. Go to **Settings** → **Pages**
-3. Set Source to: **Deploy from a branch**
-4. Branch: **main** / root
-5. Save
-
-Your data will be available at:
-`https://YOUR_USERNAME.github.io/macHub/data/notices.json`
-
-## 3️⃣ Run the Scraper
-
-**Option A - Via GitHub Actions (recommended):**
-- Go to **Actions** tab
-- Click **Scrape MAC Notices**
-- Click **Run workflow**
-- Wait ~1 minute
-- Check if `data/notices.json` appears in your repo
-
-**Option B - Locally:**
 ```bash
+# Method 1: From command line
+cd macHub
+./gradlew assembleDebug
+
+# Method 2: Open in Android Studio
+1. Launch Android Studio
+2. Click "Open"
+3. Select the macHub folder
+4. Wait for Gradle sync (1-5 minutes)
+```
+
+## 3. Run on Device
+
+### Option A: Physical Device
+```bash
+1. Enable USB Debugging on your phone:
+   Settings → About Phone → Tap "Build Number" 7 times
+   Settings → Developer Options → Enable "USB Debugging"
+
+2. Connect phone via USB
+
+3. Click "Run" (▶️) in Android Studio
+   OR
+   ./gradlew installDebug
+```
+
+### Option B: Emulator
+```bash
+1. In Android Studio: Tools → Device Manager
+2. Create Virtual Device (Pixel 6, API 34)
+3. Click "Run" (▶️)
+```
+
+## 4. Build Release APK
+
+```bash
+# From terminal
+./gradlew assembleRelease
+
+# APK location
+app/build/outputs/apk/release/app-release-unsigned.apk
+
+# Install on device
+adb install app/build/outputs/apk/release/app-release-unsigned.apk
+```
+
+## 5. Update Data (Optional)
+
+The app comes with pre-loaded data. To update with fresh scraped data:
+
+```bash
+# Run scraper (requires Python)
 cd scraper
 pip install -r requirements.txt
 python main.py
+
+# Copy fresh data to assets
+cp ../data/*.json ../app/src/main/assets/data/
+
+# Rebuild
+cd ..
+./gradlew assembleRelease
 ```
 
-## 4️⃣ Build the APK
+## Troubleshooting
 
-**Push to GitHub:**
+### Gradle sync failed
 ```bash
-git add .
-git commit -m "Initial commit"
-git push origin main
-```
-
-GitHub Actions will automatically build your APK.
-
-**Download APK:**
-- Go to **Actions** tab
-- Click the latest workflow run
-- Scroll to **Artifacts**
-- Download **MAC-HUB-APK**
-
-OR
-
-- Go to **Releases** (if successful)
-- Download the APK from latest release
-
-## 5️⃣ Install on Phone
-
-- Transfer APK to your phone
-- Allow installation from unknown sources
-- Install and open
-
-## ⚠️ Common Issues
-
-### "No notices found"
-- Check if `data/notices.json` exists in repo
-- Open `https://YOUR_USERNAME.github.io/macHub/data/notices.json` in browser
-- If it's not accessible, GitHub Pages might still be deploying (wait 2-3 minutes)
-
-### Scraper finds too much garbage
-Edit `scraper/main.py` and refine the CSS selectors:
-```python
-# Instead of generic:
-for link in soup.select("a"):
-
-# Use specific selectors:
-for link in soup.select(".notice-board a"):  # class
-for link in soup.select("#notices a"):        # id  
-for link in soup.select("div.content a"):     # nested
-```
-
-### APK build fails
-- Check **Actions** logs for errors
-- For debug builds, you don't need keystore secrets
-- Ensure all files are committed
-
-## 🎯 Next Steps
-
-Once basic version works:
-
-1. **Refine scraper** - Update selectors for better accuracy
-2. **Add categories** - Improve classification in `classify_notice()`
-3. **Test filtering** - Try different batches and categories in app
-4. **Share with classmates** - Get feedback and iterate
-
-## 📱 Testing Locally (without phone)
-
-You can use Android Studio emulator OR just build and check logs:
-
-```bash
+# Clean and rebuild
+./gradlew clean
 ./gradlew assembleDebug
-# Check: app/build/outputs/apk/debug/app-debug.apk
 ```
 
-## 🔧 For Development
+### "SDK not found"
+```bash
+# Set ANDROID_HOME environment variable
+export ANDROID_HOME=$HOME/Android/Sdk  # Linux/Mac
+# OR
+set ANDROID_HOME=C:\Users\YourName\AppData\Local\Android\Sdk  # Windows
+```
 
-The beauty of this setup: **you don't need Android Studio locally!**
+### App crashes on startup
+```bash
+# Check logcat
+adb logcat | grep flanux
 
-1. Edit code in VS Code / any editor
-2. Push to GitHub
-3. GitHub Actions builds everything
-4. Download APK
-5. Test on phone
+# Most common: Data files missing
+# Solution: Verify app/src/main/assets/data/ contains:
+#   - notices.json
+#   - downloads.json
+#   - news.json
+#   - gallery.json
+```
 
-Your i3/8GB machine stays light and fast. 🔥
+## Project Structure
+
+```
+macHub/
+├── app/
+│   ├── src/main/
+│   │   ├── assets/data/          ← JSON data files (REQUIRED)
+│   │   ├── java/com/flanux/machub/
+│   │   │   ├── features/         ← UI screens
+│   │   │   ├── data/             ← Models & repository
+│   │   │   └── MainActivity.kt
+│   │   └── AndroidManifest.xml
+│   └── build.gradle.kts
+├── scraper/                      ← Python scraper
+├── data/                         ← Scraped output
+└── build.gradle.kts
+```
+
+## Common Tasks
+
+```bash
+# Debug build
+./gradlew assembleDebug
+
+# Release build
+./gradlew assembleRelease
+
+# Install on device
+./gradlew installDebug
+
+# Clean build artifacts
+./gradlew clean
+
+# Run tests
+./gradlew test
+
+# Check for updates
+./gradlew --version
+```
+
+## Next Steps
+
+1. **Customize colors**: Edit `app/src/main/java/com/flanux/machub/ui/theme/Color.kt`
+2. **Add features**: Check `features/` directory for modular code
+3. **Update scraper**: Modify `scraper/main.py` for new data sources
+4. **Deploy**: Follow GitHub Actions setup in `.github/workflows/`
+
+## Support
+
+- **Issues**: https://github.com/flanux/macHub/issues
+- **Discussions**: https://github.com/flanux/macHub/discussions
+
+---
+
+**Pro Tip**: Use `./gradlew tasks` to see all available Gradle tasks.

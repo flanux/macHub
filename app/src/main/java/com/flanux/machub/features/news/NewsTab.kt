@@ -1,12 +1,11 @@
-package com.flanux.machub.features.gallery
+package com.flanux.machub.features.news
 
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
@@ -23,34 +22,34 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import coil.compose.AsyncImage
 import com.flanux.machub.data.DataRepository
-import com.flanux.machub.data.GalleryItem
+import com.flanux.machub.data.NewsItem
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
 // ViewModel
-class GalleryViewModel(private val repository: DataRepository) : ViewModel() {
+class NewsViewModel(private val repository: DataRepository) : ViewModel() {
     private val _uiState = MutableStateFlow<UiState>(UiState.Loading)
     val uiState: StateFlow<UiState> = _uiState
 
     sealed class UiState {
         object Loading : UiState()
-        data class Success(val items: List<GalleryItem>) : UiState()
+        data class Success(val items: List<NewsItem>) : UiState()
         data class Error(val message: String) : UiState()
     }
 
     init {
-        loadGallery()
+        loadNews()
     }
 
-    fun loadGallery() {
+    fun loadNews() {
         viewModelScope.launch {
             _uiState.value = UiState.Loading
             try {
-                val response = repository.loadGallery()
+                val response = repository.loadNews()
                 _uiState.value = UiState.Success(response.items)
             } catch (e: Exception) {
-                _uiState.value = UiState.Error(e.message ?: "Failed to load gallery")
+                _uiState.value = UiState.Error(e.message ?: "Failed to load news")
             }
         }
     }
@@ -59,16 +58,16 @@ class GalleryViewModel(private val repository: DataRepository) : ViewModel() {
 // Main Screen
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun GalleryTab(viewModel: GalleryViewModel) {
+fun NewsTab(viewModel: NewsViewModel) {
     val uiState by viewModel.uiState.collectAsState()
     val context = LocalContext.current
 
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Gallery") },
+                title = { Text("News & Events") },
                 actions = {
-                    IconButton(onClick = { viewModel.loadGallery() }) {
+                    IconButton(onClick = { viewModel.loadNews() }) {
                         Icon(Icons.Default.Refresh, "Refresh")
                     }
                 }
@@ -76,7 +75,7 @@ fun GalleryTab(viewModel: GalleryViewModel) {
         }
     ) { padding ->
         when (val state = uiState) {
-            is GalleryViewModel.UiState.Loading -> {
+            is NewsViewModel.UiState.Loading -> {
                 Box(
                     Modifier
                         .fillMaxSize()
@@ -87,7 +86,7 @@ fun GalleryTab(viewModel: GalleryViewModel) {
                 }
             }
             
-            is GalleryViewModel.UiState.Error -> {
+            is NewsViewModel.UiState.Error -> {
                 Box(
                     Modifier
                         .fillMaxSize()
@@ -104,26 +103,24 @@ fun GalleryTab(viewModel: GalleryViewModel) {
                         Spacer(Modifier.height(16.dp))
                         Text(state.message)
                         Spacer(Modifier.height(16.dp))
-                        Button(onClick = { viewModel.loadGallery() }) {
+                        Button(onClick = { viewModel.loadNews() }) {
                             Text("Retry")
                         }
                     }
                 }
             }
             
-            is GalleryViewModel.UiState.Success -> {
-                LazyVerticalGrid(
-                    columns = GridCells.Fixed(2),
+            is NewsViewModel.UiState.Success -> {
+                LazyColumn(
                     modifier = Modifier.padding(padding),
                     contentPadding = PaddingValues(16.dp),
-                    horizontalArrangement = Arrangement.spacedBy(12.dp),
-                    verticalArrangement = Arrangement.spacedBy(12.dp)
+                    verticalArrangement = Arrangement.spacedBy(16.dp)
                 ) {
                     items(
                         items = state.items,
-                        key = { it.url }
+                        key = { it.id }
                     ) { item ->
-                        GalleryItemCard(
+                        NewsItemCard(
                             item = item,
                             onClick = { openUrl(context, item.url) }
                         )
@@ -135,81 +132,75 @@ fun GalleryTab(viewModel: GalleryViewModel) {
 }
 
 @Composable
-fun GalleryItemCard(
-    item: GalleryItem,
+fun NewsItemCard(
+    item: NewsItem,
     onClick: () -> Unit
 ) {
     Card(
         onClick = onClick,
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(180.dp),
+        modifier = Modifier.fillMaxWidth(),
         shape = RoundedCornerShape(12.dp),
         elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
     ) {
-        Box(modifier = Modifier.fillMaxSize()) {
-            // Image (if available)
-            if (item.thumbnail != null && item.thumbnail.isNotBlank()) {
+        Column {
+            // Thumbnail image
+            if (item.thumbnail.isNotBlank()) {
                 AsyncImage(
                     model = item.thumbnail,
                     contentDescription = item.title,
-                    modifier = Modifier.fillMaxSize(),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(180.dp),
                     contentScale = ContentScale.Crop
                 )
-            } else {
-                // Placeholder for items without thumbnails
-                Box(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .padding(16.dp),
-                    contentAlignment = Alignment.Center
-                ) {
-                    Icon(
-                        if (item.type == "webview") Icons.Default.Face else Icons.Default.Favorite,
-                        contentDescription = null,
-                        tint = MaterialTheme.colorScheme.primary.copy(alpha = 0.3f),
-                        modifier = Modifier.size(48.dp)
-                    )
-                }
             }
             
-            // Gradient overlay for better text readability
-            Box(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(12.dp),
-                contentAlignment = Alignment.BottomStart
-            ) {
-                Column {
-                    // Type badge
-                    if (item.type == "webview") {
-                        Surface(
-                            color = MaterialTheme.colorScheme.secondary,
-                            shape = RoundedCornerShape(4.dp)
-                        ) {
-                            Text(
-                                "WebView",
-                                style = MaterialTheme.typography.labelSmall,
-                                color = MaterialTheme.colorScheme.onSecondary,
-                                modifier = Modifier.padding(horizontal = 6.dp, vertical = 2.dp),
-                                fontWeight = FontWeight.Medium
-                            )
-                        }
-                        Spacer(Modifier.height(4.dp))
-                    }
-                    
-                    // Title
-                    Surface(
-                        color = MaterialTheme.colorScheme.surface.copy(alpha = 0.9f),
-                        shape = RoundedCornerShape(4.dp)
+            Column(modifier = Modifier.padding(16.dp)) {
+                // Date
+                if (item.dateStr.isNotBlank()) {
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(4.dp)
                     ) {
+                        Icon(
+                            Icons.Default.DateRange,
+                            contentDescription = null,
+                            tint = MaterialTheme.colorScheme.primary,
+                            modifier = Modifier.size(16.dp)
+                        )
                         Text(
-                            item.title,
-                            style = MaterialTheme.typography.bodyMedium,
-                            fontWeight = FontWeight.SemiBold,
-                            maxLines = 2,
-                            overflow = TextOverflow.Ellipsis,
-                            modifier = Modifier.padding(8.dp)
+                            item.dateStr,
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.primary,
+                            fontWeight = FontWeight.Medium
+                        )
+                    }
+                    Spacer(Modifier.height(8.dp))
+                }
+                
+                // Title
+                Text(
+                    item.title,
+                    style = MaterialTheme.typography.titleMedium,
+                    fontWeight = FontWeight.Bold,
+                    maxLines = 3,
+                    overflow = TextOverflow.Ellipsis
+                )
+                
+                Spacer(Modifier.height(12.dp))
+                
+                // View details button
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.End
+                ) {
+                    TextButton(onClick = onClick) {
+                        Text("View Details")
+                        Spacer(Modifier.width(4.dp))
+                        Icon(
+                            Icons.Default.ArrowForward,
+                            contentDescription = null,
+                            modifier = Modifier.size(18.dp)
                         )
                     }
                 }
