@@ -1,55 +1,296 @@
 {
+  "scraped_at": "2026-03-21T02:16:35.495046+00:00",
+  "count": 32,
+  "student_count": 32,
+  "general_count": 0,
   "downloads": [
     {
-      "title": "BBS Brochure-2078",
-      "url": "http://macpokhara.edu.np/files/c071b477-4af6-410c-82fc-abed81c7852c202218142841.pdf",
-      "type": "PDF",
-      "category": "student",
-      "scraped_at": "2026-03-20T12:39:33.176947+00:00"
+      "section": "student",
+      "program": "B.Sc.CSIT",
+      "level": "Sem-I",
+      "semester": "1",
+      "type": "E-Books",
+      "url": "https://drive.google.com/drive/folders/1vcJB2zAn8DKtud_C0HarQC5TzDgVaazF?usp=sharing",
+      "att_type": "gdrive"
     },
     {
-      "title": "c071b477-4af6-410c-82fc-abed81c7852c202218142841",
-      "url": "https://www.macpokhara.edu.np/files/c071b477-4af6-410c-82fc-abed81c7852c202218142841.pdf",
-      "type": "PDF",
-      "category": "general",
-      "scraped_at": "2026-03-20T12:39:33.789290+00:00"
+      "section": "student",
+      "program": "B.Sc.CSIT",
+      "level": "Sem-I",
+      "semester": "1",
+      "type": "Notes",
+      "url": "https://drive.google.com/drive/folders/18dW3qzgZ0TZcq6IHvKQgpkAr2ot0LWfH?usp=sharing",
+      "att_type": "gdrive"
     },
     {
-      "title": "36eff1fc-a281-4acd-9de5-a2f8ad4da73e202111331014",
-      "url": "https://www.macpokhara.edu.np/files/36eff1fc-a281-4acd-9de5-a2f8ad4da73e202111331014.pdf",
-      "type": "PDF",
-      "category": "general",
-      "scraped_at": "2026-03-20T12:39:33.793854+00:00"
+      "section": "student",
+      "program": "B.Sc.CSIT",
+      "level": "Sem-I",
+      "semester": "1",
+      "type": "Question Collection",
+      "url": "https://macpokhara-my.sharepoint.com/:f:/g/personal/drive_macpokhara_edu_np/EslwAiwy4j1HukVGMXP6UZ8BADi8mSHZvQpGQPMEkaddKA?e=yez2XJ",
+      "att_type": "sharepoint"
     },
     {
-      "title": "af679ca2-cbd4-41ef-97ba-c40fcdabf9d420211228121826",
-      "url": "https://www.macpokhara.edu.np/files/af679ca2-cbd4-41ef-97ba-c40fcdabf9d420211228121826.pdf",
-      "type": "PDF",
-      "category": "general",
-      "scraped_at": "2026-03-20T12:39:33.793972+00:00"
+      "section": "student",
+      "program": "B.Sc.CSIT",
+      "level": "Sem-I",
+      "semester": "1",
+      "type": "Syllabus",
+      "url": "https://drive.google.com/drive/folders/1fdENoavnpd2A-1kZpsqbpI1kb-vtLz7l",
+      "att_type": "gdrive"
     },
     {
-      "title": "ca9930d2-c46a-459f-94d4-2e2daf76187e2021122013504",
-      "url": "https://www.macpokhara.edu.np/files/ca9930d2-c46a-459f-94d4-2e2daf76187e2021122013504.pdf",
-      "type": "PDF",
-      "category": "general",
-      "scraped_at": "2026-03-20T12:39:33.794089+00:00"
+      "section": "student",
+      "program": "B.Sc.CSIT",
+      "level": "Sem-II",
+      "semester": "2",
+      "type": "E-Books",
+      "url": "https://drive.google.com/drive/folders/1LA3sbhteOSivSnhnnxUyqHzGyid7bKhr?usp=sharing",
+      "att_type": "gdrive"
     },
     {
-      "title": "d173f23c-d3d5-4357-ae55-eea1062383382022101773753",
-      "url": "https://www.macpokhara.edu.np/files/d173f23c-d3d5-4357-ae55-eea1062383382022101773753.pdf",
-      "type": "PDF",
-      "category": "general",
-      "scraped_at": "2026-03-20T12:39:33.794216+00:00"
+      "section": "student",
+      "program": "B.Sc.CSIT",
+      "level": "Sem-II",
+      "semester": "2",
+      "type": "Notes",
+      "url": "https://drive.google.com/drive/folders/1aM6reM40bSLx0Jcy-IwkC08L-mzle-vA?usp=sharing",
+      "att_type": "gdrive"
     },
     {
-      "title": "BBS Brochure-2078",
-      "url": "http://macpokhara.edu.np/files/c071b477-4af6-410c-82fc-abed81c7852c202218142841.pdf",
-      "type": "PDF",
-      "category": "general",
-      "scraped_at": "2026-03-20T12:39:33.794469+00:00"
+      "section": "student",
+      "program": "B.Sc.CSIT",
+      "level": "Sem-II",
+      "semester": "2",
+      "type": "Question Collection",
+      "url": "https://drive.google.com/drive/folders/1tWa0lZ2ktNwuxMy-pinzZDxrXISDUCmC?usp=sharing",
+      "att_type": "gdrive"
+    },
+    {
+      "section": "student",
+      "program": "B.Sc.CSIT",
+      "level": "Sem-II",
+      "semester": "2",
+      "type": "Syllabus",
+      "url": "https://drive.google.com/drive/folders/1h9eV0XyOpQ6VsjX2CLMitW5QvHVD6SgN?usp=sharing",
+      "att_type": "gdrive"
+    },
+    {
+      "section": "student",
+      "program": "B.Sc.CSIT",
+      "level": "Sem-III",
+      "semester": "3",
+      "type": "Notes",
+      "url": "https://drive.google.com/drive/folders/1ca0IVebm2gSRQ1ahrDtxNAnQJjFP6SOj?usp=sharing",
+      "att_type": "gdrive"
+    },
+    {
+      "section": "student",
+      "program": "B.Sc.CSIT",
+      "level": "Sem-III",
+      "semester": "3",
+      "type": "Question Collection",
+      "url": "https://drive.google.com/drive/folders/17pPydJL8ln_IwCd0VtSPNCMFelIgkhOk?usp=sharing",
+      "att_type": "gdrive"
+    },
+    {
+      "section": "student",
+      "program": "B.Sc.CSIT",
+      "level": "Sem-III",
+      "semester": "3",
+      "type": "Syllabus",
+      "url": "https://drive.google.com/drive/folders/1HqoY1So1y9-95T58f42P7NcOyQ275g2a?usp=sharing",
+      "att_type": "gdrive"
+    },
+    {
+      "section": "student",
+      "program": "B.Sc.CSIT",
+      "level": "Sem-IV",
+      "semester": "4",
+      "type": "E-Books",
+      "url": "https://drive.google.com/drive/folders/1PEoLs3gHW8UJfNF6EqAfS1hO4ET-5kpZ?usp=sharing",
+      "att_type": "gdrive"
+    },
+    {
+      "section": "student",
+      "program": "B.Sc.CSIT",
+      "level": "Sem-IV",
+      "semester": "4",
+      "type": "Notes",
+      "url": "https://drive.google.com/drive/folders/1cVbYaZ0YuJdICFLNETBs1kgbW_DXf5i7?usp=sharing",
+      "att_type": "gdrive"
+    },
+    {
+      "section": "student",
+      "program": "B.Sc.CSIT",
+      "level": "Sem-IV",
+      "semester": "4",
+      "type": "Question Collection",
+      "url": "https://drive.google.com/drive/folders/1U-a3gL2NqH5BVrS_Bz0AD1NCE3ae42ib?usp=sharing",
+      "att_type": "gdrive"
+    },
+    {
+      "section": "student",
+      "program": "B.Sc.CSIT",
+      "level": "Sem-IV",
+      "semester": "4",
+      "type": "Syllabus",
+      "url": "https://drive.google.com/drive/folders/1BiBK7FmDKnwbmYcptukVPGzsFbsGAa8m?usp=sharing",
+      "att_type": "gdrive"
+    },
+    {
+      "section": "student",
+      "program": "B.Sc.CSIT",
+      "level": "Sem-V",
+      "semester": "5",
+      "type": "E-Books",
+      "url": "https://drive.google.com/drive/folders/1pJ6C_jxrFA-q98cM5FqG0KqQzGhjjfrm?usp=sharing",
+      "att_type": "gdrive"
+    },
+    {
+      "section": "student",
+      "program": "B.Sc.CSIT",
+      "level": "Sem-V",
+      "semester": "5",
+      "type": "Model Question",
+      "url": "https://drive.google.com/drive/folders/1Nc0R7kMtxgJrz4HGnHhTcl56FBLsT7q9?usp=sharing",
+      "att_type": "gdrive"
+    },
+    {
+      "section": "student",
+      "program": "B.Sc.CSIT",
+      "level": "Sem-V",
+      "semester": "5",
+      "type": "Question Collection",
+      "url": "https://drive.google.com/drive/folders/1fm1bQ3jo87Ht_29C-rEpnR-bLScZnbtf?usp=sharing",
+      "att_type": "gdrive"
+    },
+    {
+      "section": "student",
+      "program": "B.Sc.CSIT",
+      "level": "Sem-V",
+      "semester": "5",
+      "type": "Syllabus",
+      "url": "https://drive.google.com/file/d/1S1V7SW3jb8MBHR3WZd54toU68eWy0MD8/view?usp=sharing",
+      "att_type": "gdrive"
+    },
+    {
+      "section": "student",
+      "program": "B.Sc.CSIT",
+      "level": "Sem-VI",
+      "semester": "6",
+      "type": "Model Question",
+      "url": "https://drive.google.com/drive/folders/1skBLSM6rOWcw6eQGFYx0NInPAOPPCuh9?usp=sharing",
+      "att_type": "gdrive"
+    },
+    {
+      "section": "student",
+      "program": "B.Sc.CSIT",
+      "level": "Sem-VI",
+      "semester": "6",
+      "type": "Question Collection",
+      "url": "https://drive.google.com/drive/folders/1GYmGt2rchhmn1IysRp3Gwm2VOt_7wz1o?usp=sharing",
+      "att_type": "gdrive"
+    },
+    {
+      "section": "student",
+      "program": "B.Sc.CSIT",
+      "level": "Sem-VI",
+      "semester": "6",
+      "type": "Syllabus",
+      "url": "https://drive.google.com/drive/folders/1vIqXA91KJtkr3l10nxN7qthqz8ITJjyf?usp=sharing",
+      "att_type": "gdrive"
+    },
+    {
+      "section": "student",
+      "program": "B.Sc.CSIT",
+      "level": "Sem-VII",
+      "semester": "7",
+      "type": "E-Books",
+      "url": "https://drive.google.com/drive/folders/1Usu3Zk77aHtTfXAihJJxN_g46NPzwW3Q?usp=sharing",
+      "att_type": "gdrive"
+    },
+    {
+      "section": "student",
+      "program": "B.Sc.CSIT",
+      "level": "Sem-VII",
+      "semester": "7",
+      "type": "Model Question",
+      "url": "https://drive.google.com/drive/folders/1eApCpVsPfzjMSltDAsC5W9zZtf_sksrQ?usp=sharing",
+      "att_type": "gdrive"
+    },
+    {
+      "section": "student",
+      "program": "B.Sc.CSIT",
+      "level": "Sem-VII",
+      "semester": "7",
+      "type": "Notes",
+      "url": "https://drive.google.com/drive/folders/1i8HVWcaHG6ITKkl1jYMfK73Bk8yV-6uH?usp=sharing",
+      "att_type": "gdrive"
+    },
+    {
+      "section": "student",
+      "program": "B.Sc.CSIT",
+      "level": "Sem-VII",
+      "semester": "7",
+      "type": "Project Resources",
+      "url": "https://drive.google.com/drive/folders/1wRAdr_giXZdioeYHu7ARQykZqROrvZ9H?usp=sharing",
+      "att_type": "gdrive"
+    },
+    {
+      "section": "student",
+      "program": "B.Sc.CSIT",
+      "level": "Sem-VII",
+      "semester": "7",
+      "type": "Question Collection",
+      "url": "https://drive.google.com/drive/folders/17XSt0crNDKPr8JjBdFoIGxtQitn-lK5P?usp=sharing",
+      "att_type": "gdrive"
+    },
+    {
+      "section": "student",
+      "program": "B.Sc.CSIT",
+      "level": "Sem-VII",
+      "semester": "7",
+      "type": "Syllabus",
+      "url": "https://drive.google.com/drive/folders/1lvfHkba-cI_ZcmaFjqI4EbAok1ljj3XI?usp=sharing",
+      "att_type": "gdrive"
+    },
+    {
+      "section": "student",
+      "program": "B.Sc.CSIT",
+      "level": "Sem-VIII",
+      "semester": "8",
+      "type": "E-Books",
+      "url": "https://drive.google.com/drive/folders/1FWUoVkSU46T5LZF-XIBjnsi89xUGn5Ml?usp=sharing",
+      "att_type": "gdrive"
+    },
+    {
+      "section": "student",
+      "program": "B.Sc.CSIT",
+      "level": "Sem-VIII",
+      "semester": "8",
+      "type": "Model Question",
+      "url": "https://drive.google.com/drive/folders/1LSuCM9jPr_6TxxEdu50HeSuLZpAkxStj",
+      "att_type": "gdrive"
+    },
+    {
+      "section": "student",
+      "program": "B.Sc.CSIT",
+      "level": "Sem-VIII",
+      "semester": "8",
+      "type": "Question Collection",
+      "url": "https://drive.google.com/drive/folders/1Ob8oI1GO2I89SPSC8prJfxBYrarOluNh?usp=sharing",
+      "att_type": "gdrive"
+    },
+    {
+      "section": "student",
+      "program": "B.Sc.CSIT",
+      "level": "Sem-VIII",
+      "semester": "8",
+      "type": "Syllabus",
+      "url": "https://drive.google.com/drive/folders/1afXhwxA_tbthCp8PZA2_Nvdz7cdzq9h7?usp=sharing",
+      "att_type": "gdrive"
     }
-  ],
-  "last_updated": "2026-03-20T12:39:35.015455+00:00",
-  "total_count": 7
+  ]
 }

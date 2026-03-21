@@ -1,76 +1,239 @@
 {
+  "scraped_at": "2026-03-21T02:16:22.980867+00:00",
+  "count": 10,
+  "new_this_run": 10,
+  "updated_this_run": 0,
+  "failed_urls": [],
   "notices": [
     {
-      "title": "B.Sc.CSIT -2078 Batch Second Year Fourth Semester Regular and Partial Exam Form Fill Up Notice",
-      "url": "https://www.macpokhara.edu.np/Notice/noticedetail/0493819c-0968-4c11-9704-c6707dff1e1a20241814313",
-      "category": "exam",
-      "batch": "2078",
-      "scraped_at": "2026-03-20T12:39:32.417610+00:00"
-    },
-    {
-      "title": "B.Sc.CSIT 2078 Batch, Second Year, Fourth Semester First Terminal Examination Notice [College]",
-      "url": "https://www.macpokhara.edu.np/Notice/noticedetail/28f4d3f6-b772-4a31-b8b8-1f2048ad433f202418143318",
-      "category": "exam",
-      "batch": "2078",
-      "scraped_at": "2026-03-20T12:39:32.417575+00:00"
-    },
-    {
-      "title": "B.Sc.CSIT -2078 Batch Second Year Fourth Semester First Terminal Examination Result [College]",
-      "url": "https://www.macpokhara.edu.np/Notice/noticedetail/54d0e624-65b2-4bfc-84ea-89046ea2e17d20242163424",
-      "category": "result",
-      "batch": "2078",
-      "scraped_at": "2026-03-20T12:39:32.417542+00:00"
-    },
-    {
-      "title": "B.Sc.CSIT -2080 Batch First Year First Semester First Terminal Examination Result [College]",
-      "url": "https://www.macpokhara.edu.np/Notice/noticedetail/e9d73f52-e380-44e1-a02a-10ee413ab01520242222188",
-      "category": "result",
-      "batch": "2080",
-      "scraped_at": "2026-03-20T12:39:32.417508+00:00"
-    },
-    {
-      "title": "B.Sc.CSIT -2077 Batch Third Year Sixth Semester First Terminal Examination Result [College]",
-      "url": "https://www.macpokhara.edu.np/Notice/noticedetail/81ba81a5-a6d3-42e5-9921-4d7840a25f35202444142755",
-      "category": "result",
-      "batch": "2077",
-      "scraped_at": "2026-03-20T12:39:32.417474+00:00"
-    },
-    {
-      "title": "B.Sc.CSIT 2079 Batch, Second Year, Third Semester Preboard Examination Notice [College]",
-      "url": "https://www.macpokhara.edu.np/Notice/noticedetail/a3e891bb-ad91-433c-8a2b-1d562948e17f202441091451",
-      "category": "exam",
-      "batch": "2079",
-      "scraped_at": "2026-03-20T12:39:32.417435+00:00"
-    },
-    {
-      "title": "Notice Regarding Dress and College Timing",
-      "url": "https://www.macpokhara.edu.np/Notice/noticedetail/abc5ce59-6845-47f2-8d2c-c26df4da67ec20247784733",
-      "category": "notice",
-      "batch": null,
-      "scraped_at": "2026-03-20T12:39:32.417399+00:00"
-    },
-    {
-      "title": "B.Sc.CSIT Final Year Project Work Proposal Defense-2077 Batch",
-      "url": "https://www.macpokhara.edu.np/Notice/noticedetail/f4eeb6da-ed83-4b15-872c-706f8054265d2024875151",
-      "category": "project",
-      "batch": "2077",
-      "scraped_at": "2026-03-20T12:39:32.417359+00:00"
-    },
-    {
-      "title": "B.Sc.CSIT 2080 Batch, First Year, Second Semester First Terminal Examination Result and Attendance Summary [College]",
-      "url": "https://www.macpokhara.edu.np/Notice/noticedetail/0d03041b-fd0a-4e3e-9d98-354e39655fb8202482513013",
-      "category": "result",
-      "batch": "2080",
-      "scraped_at": "2026-03-20T12:39:32.417311+00:00"
-    },
-    {
+      "id": "372f1295-4789-4b81-86de-506f7f66668f2024921729",
       "title": "B.Sc.CSIT 2079 Batch, Second Year, Fourth Semester First Terminal Examination Result and Attendance Summary [College]",
-      "url": "https://www.macpokhara.edu.np/Notice/noticedetail/372f1295-4789-4b81-86de-506f7f66668f2024921729",
-      "category": "result",
-      "batch": "2079",
-      "scraped_at": "2026-03-20T12:39:32.417234+00:00"
+      "url": "https://macpokhara.edu.np/Notice/noticedetail/372f1295-4789-4b81-86de-506f7f66668f2024921729",
+      "date_str": "9/2/2024",
+      "date_iso": "2024-09-02T00:00:00+00:00",
+      "category": "examination",
+      "batches": [
+        "2079"
+      ],
+      "semester": "4",
+      "year": "second",
+      "body": "B.Sc.CSIT 2079 Batch, Second Year, Fourth Semester First Terminal Examination Result and Attendance Summary [College]\n🕐\r\n                                    9/2/2024 Share\nClick Here For Detail. Note: Those students who are failed or obtained less mark should submit (2 set internal + 3 set Board) examination questions handwritten solution to your respective subject teacher on or before 2024/08/30 Friday,. Final Revised mark(Internal) will be published 2024/09/08, Sunday. Respected Subject teachers are requested to upload the revised marks accordingly. See You Attendance Summary By Clicking Here.",
+      "body_hash": "d4276421c150728ab931caff982c4ea1",
+      "attachments": [
+        {
+          "label": "Attendance Sheet",
+          "url": "https://macpokhara-my.sharepoint.com/:f:/g/personal/drive_macpokhara_edu_np/EnKqrucd8hRBsXWNQwVHegUBTuCphGgE_qUJbBoKE8DJqA?e=Hj1SuJ",
+          "type": "sharepoint"
+        },
+        {
+          "label": "Attendance Sheet 2",
+          "url": "https://macpokhara-my.sharepoint.com/:x:/g/personal/drive_macpokhara_edu_np/EelczbIzvMhEm0k8u_B1Y9ABmh4IaI-tGBs5nv8iyW_2kA?e=CE5opz",
+          "type": "sharepoint"
+        }
+      ]
+    },
+    {
+      "id": "0d03041b-fd0a-4e3e-9d98-354e39655fb8202482513013",
+      "title": "B.Sc.CSIT 2080 Batch, First Year, Second Semester First Terminal Examination Result and Attendance Summary [College]",
+      "url": "https://macpokhara.edu.np/Notice/noticedetail/0d03041b-fd0a-4e3e-9d98-354e39655fb8202482513013",
+      "date_str": "8/25/2024",
+      "date_iso": "2024-08-25T00:00:00+00:00",
+      "category": "examination",
+      "batches": [
+        "2080"
+      ],
+      "semester": "2",
+      "year": "first",
+      "body": "B.Sc.CSIT 2080 Batch, First Year, Second Semester First Terminal Examination Result and Attendance Summary [College]\n🕐\r\n                                    8/25/2024 Share\nClick Here For Detail. Note: Those students who are failed or obtained less mark should submit (2 set internal + 3 set Board) examination questions handwritten solution to your respective subject teacher on or before 2024/08/30 Friday,. Final Revised mark(Internal) will be published 2024/09/04, Wednesday. Respected Subject teachers are requested to upload the marks accordingly. See You Attendance Summary By Clicking Here.",
+      "body_hash": "cf941d33f25bd735b187f5ee5dbb6f6f",
+      "attachments": [
+        {
+          "label": "Attendance Sheet",
+          "url": "https://macpokhara-my.sharepoint.com/:x:/g/personal/drive_macpokhara_edu_np/EcgJlM7vGBhIuekHc8aLrRMBgQBkWDl8o6ORHAlG2LktDQ?e=1q626Y",
+          "type": "sharepoint"
+        },
+        {
+          "label": "Attendance Sheet 2",
+          "url": "https://macpokhara-my.sharepoint.com/:x:/g/personal/drive_macpokhara_edu_np/ES_OVWXCZWFMh6XG980lMD0B-z_mEyde14k8H8nwWWVPDQ?e=gkTFcm",
+          "type": "sharepoint"
+        }
+      ]
+    },
+    {
+      "id": "f4eeb6da-ed83-4b15-872c-706f8054265d2024875151",
+      "title": "B.Sc.CSIT Final Year Project Work Proposal Defense-2077 Batch",
+      "url": "https://macpokhara.edu.np/Notice/noticedetail/f4eeb6da-ed83-4b15-872c-706f8054265d2024875151",
+      "date_str": "8/7/2024",
+      "date_iso": "2024-08-07T00:00:00+00:00",
+      "category": "general",
+      "batches": [
+        "2077"
+      ],
+      "semester": "1",
+      "year": "",
+      "body": "B.Sc.CSIT Final Year Project Work Proposal Defense-2077 Batch\n🕐\r\n                                    8/7/2024 Share\nIt's to inform all the students of 2077 Batch 7th Semester that Proposal Defense of Final Year Project Work has been scheduled as per below detail. Date: 2024/08/16, Friday Time: 6:00 am onwards (Sharp) Venu: MAC Seminar Hall Note: Student must provide the proposed title and team member information by filling up this online form on or before 2024/08/09, Friday. Student Must submit Hardcopy Proposal report written as per the guidelines provided by IOST TU  on or before 2024/08/14 Wednesday . Also Student must mail softcopy of report(.doc format) and Presentation slide(ppt format). Check here for Proposal format and guidelines Coverpage and Certificates should be used as per the format provided by college. Student can find official format here . Student must send email with softcopy attachments(proposal and presentation slide) at [email protected] . Student can track their project work Evaluation/Mark from here.",
+      "body_hash": "de0e63e1e4e24201894026c0e65bdd6b",
+      "attachments": [
+        {
+          "label": "SharePoint Folder 1",
+          "url": "https://macpokhara-my.sharepoint.com/:x:/g/personal/drive_macpokhara_edu_np/ESQuw3PfWr1DkzMu7EGKUugBT5VNPsiqPVSqBO3Z2GWAlg?e=fdwGT8",
+          "type": "sharepoint"
+        },
+        {
+          "label": "Attachment 2",
+          "url": "https://macpokhara.edu.np/Downloads/ShowStudentDownloadDetails?program=cf0dfc1c-6564-44d9-9ae1-ede48ee50a9b&level=032f7a27-7ee9-4275-a607-ca1e209879fe&type=b1c19fcf-ff13-4d8c-bfa8-0a0d42fa2427",
+          "type": "link"
+        },
+        {
+          "label": "Attachment 3",
+          "url": "https://macpokhara.edu.np/Downloads/ShowStudentDownloadDetails?program=cf0dfc1c-6564-44d9-9ae1-ede48ee50a9b&level=032f7a27-7ee9-4275-a607-ca1e209879fe&type=054f3302-20b4-462d-b46d-29aa03f4947a",
+          "type": "link"
+        },
+        {
+          "label": "SharePoint Folder 4",
+          "url": "https://macpokhara-my.sharepoint.com/:x:/g/personal/drive_macpokhara_edu_np/EdbNfcXJHa1BiM61yn90oJQBVJIFrD2-EEHL3iNhiGxxdw?e=OMBzyI",
+          "type": "sharepoint"
+        }
+      ]
+    },
+    {
+      "id": "abc5ce59-6845-47f2-8d2c-c26df4da67ec20247784733",
+      "title": "Notice Regarding Dress and College Timing",
+      "url": "https://macpokhara.edu.np/Notice/noticedetail/abc5ce59-6845-47f2-8d2c-c26df4da67ec20247784733",
+      "date_str": "7/7/2024",
+      "date_iso": "2024-07-07T00:00:00+00:00",
+      "category": "general",
+      "batches": [],
+      "semester": "",
+      "year": "",
+      "body": "Notice Regarding Dress and College Timing\n🕐\r\n                                    7/7/2024 Share",
+      "body_hash": "21318d701a2ed678275e17f1e0e19ca4",
+      "attachments": []
+    },
+    {
+      "id": "a3e891bb-ad91-433c-8a2b-1d562948e17f202441091451",
+      "title": "B.Sc.CSIT 2079 Batch, Second Year, Third Semester Preboard Examination Notice [College]",
+      "url": "https://macpokhara.edu.np/Notice/noticedetail/a3e891bb-ad91-433c-8a2b-1d562948e17f202441091451",
+      "date_str": "4/10/2024",
+      "date_iso": "2024-04-10T00:00:00+00:00",
+      "category": "examination",
+      "batches": [
+        "2079"
+      ],
+      "semester": "3",
+      "year": "second",
+      "body": "B.Sc.CSIT 2079 Batch, Second Year, Third Semester Preboard Examination Notice [College]\n🕐\r\n                                    4/10/2024 Share\nClick Here For Detail.",
+      "body_hash": "4c55920c7e7e1965fb3c8799d331c3c4",
+      "attachments": [
+        {
+          "label": "Notice",
+          "url": "https://macpokhara-my.sharepoint.com/:i:/g/personal/drive_macpokhara_edu_np/EY9l7NbGDwhBqwWvSJfrqVwBjiG3GBf_O2ovQxIn_2dxkg?e=GE9d1G",
+          "type": "sharepoint"
+        }
+      ]
+    },
+    {
+      "id": "81ba81a5-a6d3-42e5-9921-4d7840a25f35202444142755",
+      "title": "B.Sc.CSIT -2077 Batch Third Year Sixth Semester First Terminal Examination Result [College]",
+      "url": "https://macpokhara.edu.np/Notice/noticedetail/81ba81a5-a6d3-42e5-9921-4d7840a25f35202444142755",
+      "date_str": "4/5/2024",
+      "date_iso": "2024-04-05T00:00:00+00:00",
+      "category": "examination",
+      "batches": [
+        "2077"
+      ],
+      "semester": "6",
+      "year": "third",
+      "body": "B.Sc.CSIT -2077 Batch Third Year Sixth Semester First Terminal Examination Result [College]\n🕐\r\n                                    4/5/2024 Share\nClick Here For Detail. Note: Those students who are failed or obtained less mark should submit (2 set internal + 3 set Board) examination questions handwritten solution to your respective subject teacher on or before 2024/04/10 Wednesday,. Final Revised mark(Internal) will be published 2024/04/12, Friday. See You Attendance Summary By Clicking Here.",
+      "body_hash": "1c947f0e6a8fcfc6640c661155e0bdf5",
+      "attachments": [
+        {
+          "label": "Result",
+          "url": "https://macpokhara-my.sharepoint.com/:f:/g/personal/drive_macpokhara_edu_np/EukzDLl0MzZMm4e7BhkQkfkBDoC-WqbpI8vPrwtIMgj0Nw?e=ETNgvK",
+          "type": "sharepoint"
+        },
+        {
+          "label": "Result 2",
+          "url": "https://macpokhara-my.sharepoint.com/:x:/g/personal/drive_macpokhara_edu_np/EU1r0Q6cxT1Ii7ak8aK1pHYBwAi6xucnP3Sle5beRYySkg?e=BbMrSp",
+          "type": "sharepoint"
+        }
+      ]
+    },
+    {
+      "id": "e9d73f52-e380-44e1-a02a-10ee413ab01520242222188",
+      "title": "B.Sc.CSIT -2080  Batch First Year First Semester First Terminal Examination Result [College]",
+      "url": "https://macpokhara.edu.np/Notice/noticedetail/e9d73f52-e380-44e1-a02a-10ee413ab01520242222188",
+      "date_str": "2/22/2024",
+      "date_iso": "2024-02-22T00:00:00+00:00",
+      "category": "examination",
+      "batches": [
+        "2080"
+      ],
+      "semester": "1",
+      "year": "first",
+      "body": "B.Sc.CSIT -2080  Batch First Year First Semester First Terminal Examination Result [College]\n🕐\r\n                                    2/22/2024 Share\nClick Here For Detail. Note: Those students who are failed or obtained less mark should submit (2 set internal + 3 set Board) examination questions handwritten solution to your respective subject teacher on or before 2024/03/01 Friday,. Final Revised mark(Internal) will be published 2024/03/04, Monday",
+      "body_hash": "4c063d345bfffd65bab208ed4ec5c7de",
+      "attachments": [
+        {
+          "label": "Result",
+          "url": "https://macpokhara-my.sharepoint.com/:f:/g/personal/drive_macpokhara_edu_np/EhUK2na8rcRJgEmRBm6E9A0BlesGg5yf2UG2x_312EIH-w?e=YyWRbd",
+          "type": "sharepoint"
+        }
+      ]
+    },
+    {
+      "id": "54d0e624-65b2-4bfc-84ea-89046ea2e17d20242163424",
+      "title": "B.Sc.CSIT -2078  Batch Second Year Fourth Semester First Terminal Examination Result [College]",
+      "url": "https://macpokhara.edu.np/Notice/noticedetail/54d0e624-65b2-4bfc-84ea-89046ea2e17d20242163424",
+      "date_str": "2/1/2024",
+      "date_iso": "2024-02-01T00:00:00+00:00",
+      "category": "examination",
+      "batches": [
+        "2078"
+      ],
+      "semester": "4",
+      "year": "second",
+      "body": "B.Sc.CSIT -2078  Batch Second Year Fourth Semester First Terminal Examination Result [College]\n🕐\r\n                                    2/1/2024 Share\nClick Here For Detail. Note: Those students who are failed or obtained less mark should submit (2 set internal + 3 set Board) examination questions handwritten solution to your respective subject teacher on or before 2024/01/07. Final Revised mark(Internal) will be published 2024/01/08, Thursday.",
+      "body_hash": "718e56f00761145f7b9a172f82f434d0",
+      "attachments": [
+        {
+          "label": "Result",
+          "url": "https://macpokhara-my.sharepoint.com/:f:/g/personal/drive_macpokhara_edu_np/EnKpQQEiwT1GmfmWfMJ9WFIBRh6SZ39BhKK4KV8Esy4oHw?e=ehu4ei",
+          "type": "sharepoint"
+        }
+      ]
+    },
+    {
+      "id": "28f4d3f6-b772-4a31-b8b8-1f2048ad433f202418143318",
+      "title": "B.Sc.CSIT 2078 Batch, Second Year, Fourth Semester First Terminal Examination Notice [College]",
+      "url": "https://macpokhara.edu.np/Notice/noticedetail/28f4d3f6-b772-4a31-b8b8-1f2048ad433f202418143318",
+      "date_str": "1/8/2024",
+      "date_iso": "2024-01-08T00:00:00+00:00",
+      "category": "examination",
+      "batches": [
+        "2078"
+      ],
+      "semester": "4",
+      "year": "second",
+      "body": "B.Sc.CSIT 2078 Batch, Second Year, Fourth Semester First Terminal Examination Notice [College]\n🕐\r\n                                    1/8/2024 Share",
+      "body_hash": "0d804ccd9efc3ad8da5c9cae09ec8b67",
+      "attachments": []
+    },
+    {
+      "id": "0493819c-0968-4c11-9704-c6707dff1e1a20241814313",
+      "title": "B.Sc.CSIT -2078 Batch Second Year Fourth Semester Regular and Partial Exam Form Fill Up Notice",
+      "url": "https://macpokhara.edu.np/Notice/noticedetail/0493819c-0968-4c11-9704-c6707dff1e1a20241814313",
+      "date_str": "1/8/2024",
+      "date_iso": "2024-01-08T00:00:00+00:00",
+      "category": "examination",
+      "batches": [
+        "2078"
+      ],
+      "semester": "4",
+      "year": "second",
+      "body": "B.Sc.CSIT -2078 Batch Second Year Fourth Semester Regular and Partial Exam Form Fill Up Notice\n🕐\r\n                                    1/8/2024 Share",
+      "body_hash": "069062ec99cb0315e5d84bc64f6719ce",
+      "attachments": []
     }
-  ],
-  "last_updated": "2026-03-20T12:39:35.015455+00:00",
-  "total_count": 10
+  ]
 }

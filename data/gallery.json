@@ -1,18 +1,73 @@
 {
-  "gallery": [
+  "scraped_at": "2026-03-21T02:16:36.006953+00:00",
+  "count": 8,
+  "note": "type=webview → open in WebView | type=album → open URL directly",
+  "items": [
     {
-      "title": "MAC",
-      "image_url": "https://www.macpokhara.edu.np/images/Uploads/678b1836-92e2-494a-8b69-8e0e3a97dffd202291441435.png",
-      "category": "routine",
-      "scraped_at": "2026-03-20T12:39:34.402007+00:00"
+      "title": "Class Routine",
+      "type": "webview",
+      "url": "https://macpokhara.edu.np/Gallery/ShowGalleryGeneral?id=4affa6d7-c154-4b8f-a2b6-d8efff49f659",
+      "thumbnail": null,
+      "batches": []
     },
     {
-      "title": "MAC",
-      "image_url": "https://www.macpokhara.edu.np/images/Uploads/678b1836-92e2-494a-8b69-8e0e3a97dffd202291441435.png",
-      "category": "semester_plan",
-      "scraped_at": "2026-03-20T12:39:35.010193+00:00"
+      "title": "Semester Plan",
+      "type": "webview",
+      "url": "https://macpokhara.edu.np/Gallery/ShowGalleryGeneral?id=eb7b0844-c6ef-4ff3-84e2-a8078d0f68d9",
+      "thumbnail": null,
+      "batches": []
+    },
+    {
+      "title": "B.Sc.CSIT Batch Photos",
+      "type": "webview",
+      "url": "https://macpokhara.edu.np/Gallery/ShowGalleryGeneral?id=c2c8f553-ba9e-45eb-921c-c3fa29cce85f",
+      "thumbnail": null,
+      "batches": []
+    },
+    {
+      "title": "Welcome and Farewell-2080",
+      "type": "album",
+      "url": "https://macpokhara-my.sharepoint.com/:f:/g/personal/drive_macpokhara_edu_np/EoCzzDRljvlKoU7Y42e1fpABdDLTzbgwtqK6B2asTY_Urg?e=h2ofPu",
+      "thumbnail": "https://macpokhara.edu.np/images/Uploads/4925621a-e635-4293-a43b-7e91a977d472202444154741.JPG",
+      "batches": [
+        "2080"
+      ]
+    },
+    {
+      "title": "Welcome & Farewell Event-2079",
+      "type": "album",
+      "url": "https://macpokhara-my.sharepoint.com/:f:/g/personal/drive_macpokhara_edu_np/Es6UEMr8L05HuCtQsvmkwBABFvz1wrsDuhpZ16_b_k55wQ?e=eVjhNG",
+      "thumbnail": "https://macpokhara.edu.np/images/Uploads/6b2b2581-8b5e-4df8-b791-1184e636ed3d2023219134859.JPG",
+      "batches": [
+        "2079"
+      ]
+    },
+    {
+      "title": "Welcome & Orientation(2078 Batch)",
+      "type": "album",
+      "url": "https://macpokhara-my.sharepoint.com/:f:/g/personal/drive_macpokhara_edu_np/ErWCi7g7EsFJhej59uZnJU4BQuiA7-cJZuoHcviyGl0wSQ?e=8cCVZv",
+      "thumbnail": "https://macpokhara.edu.np/images/Uploads/e23ea99f-4c32-4893-b42d-5443884ee44c202271532553.JPG",
+      "batches": [
+        "2078"
+      ]
+    },
+    {
+      "title": "Hardware & Networking Training(2078 Batch)",
+      "type": "album",
+      "url": "https://macpokhara-my.sharepoint.com/:f:/g/personal/drive_macpokhara_edu_np/Etf0UV6E9sxIvp05fEiG9IsBGLxAjtu0Fb4v2NgrrsJstg?e=YCSgdi",
+      "thumbnail": "https://macpokhara.edu.np/images/Uploads/242384b1-eb13-439a-a1e6-d250a8711908202271531630.JPG",
+      "batches": [
+        "2078"
+      ]
+    },
+    {
+      "title": "Sports Meet-2079",
+      "type": "album",
+      "url": "https://macpokhara-my.sharepoint.com/:f:/g/personal/drive_macpokhara_edu_np/EkAcg_iw9vtJkPO7Rn8xlrcB-dXVN8zNHkDjBpuMAyazJg?e=vVOPNF",
+      "thumbnail": "https://macpokhara.edu.np/images/Uploads/336c8489-0131-420b-94de-97e754c0800f20227141734.jpg",
+      "batches": [
+        "2079"
+      ]
     }
-  ],
-  "last_updated": "2026-03-20T12:39:35.015455+00:00",
-  "total_count": 2
+  ]
 }
