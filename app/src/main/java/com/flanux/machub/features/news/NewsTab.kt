@@ -131,6 +131,7 @@ fun NewsTab(viewModel: NewsViewModel) {
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun NewsItemCard(
     item: NewsItem,
