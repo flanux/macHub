@@ -1,9 +1,20 @@
 {
-  "scraped_at": "2026-04-23T02:11:26.387625+00:00",
+  "scraped_at": "2026-04-23T07:47:32.485466+00:00",
   "count": 10,
   "new_this_run": 0,
   "updated_this_run": 0,
-  "failed_urls": [],
+  "failed_urls": [
+    "https://macpokhara.edu.np/Notice/noticedetail/372f1295-4789-4b81-86de-506f7f66668f2024921729",
+    "https://macpokhara.edu.np/Notice/noticedetail/0d03041b-fd0a-4e3e-9d98-354e39655fb8202482513013",
+    "https://macpokhara.edu.np/Notice/noticedetail/f4eeb6da-ed83-4b15-872c-706f8054265d2024875151",
+    "https://macpokhara.edu.np/Notice/noticedetail/abc5ce59-6845-47f2-8d2c-c26df4da67ec20247784733",
+    "https://macpokhara.edu.np/Notice/noticedetail/a3e891bb-ad91-433c-8a2b-1d562948e17f202441091451",
+    "https://macpokhara.edu.np/Notice/noticedetail/81ba81a5-a6d3-42e5-9921-4d7840a25f35202444142755",
+    "https://macpokhara.edu.np/Notice/noticedetail/e9d73f52-e380-44e1-a02a-10ee413ab01520242222188",
+    "https://macpokhara.edu.np/Notice/noticedetail/54d0e624-65b2-4bfc-84ea-89046ea2e17d20242163424",
+    "https://macpokhara.edu.np/Notice/noticedetail/28f4d3f6-b772-4a31-b8b8-1f2048ad433f202418143318",
+    "https://macpokhara.edu.np/Notice/noticedetail/0493819c-0968-4c11-9704-c6707dff1e1a20241814313"
+  ],
   "notices": [
     {
       "id": "372f1295-4789-4b81-86de-506f7f66668f2024921729",
@@ -69,7 +80,7 @@
       "batches": [
         "2077"
       ],
-      "semester": "1",
+      "semester": "",
       "year": "",
       "body": "B.Sc.CSIT Final Year Project Work Proposal Defense-2077 Batch\n🕐\r\n                                    8/7/2024 Share\nIt's to inform all the students of 2077 Batch 7th Semester that Proposal Defense of Final Year Project Work has been scheduled as per below detail. Date: 2024/08/16, Friday Time: 6:00 am onwards (Sharp) Venu: MAC Seminar Hall Note: Student must provide the proposed title and team member information by filling up this online form on or before 2024/08/09, Friday. Student Must submit Hardcopy Proposal report written as per the guidelines provided by IOST TU  on or before 2024/08/14 Wednesday . Also Student must mail softcopy of report(.doc format) and Presentation slide(ppt format). Check here for Proposal format and guidelines Coverpage and Certificates should be used as per the format provided by college. Student can find official format here . Student must send email with softcopy attachments(proposal and presentation slide) at [email protected] . Student can track their project work Evaluation/Mark from here.",
       "body_hash": "de0e63e1e4e24201894026c0e65bdd6b",
