@@ -1,10 +1,26 @@
 {
-  "scraped_at": "2026-09-18T02:53:13.832435+00:00",
+  "scraped_at": "2026-09-18T10:27:00.120581+00:00",
   "count": 10,
-  "new_this_run": 0,
+  "new_this_run": 1,
   "updated_this_run": 0,
   "failed_urls": [],
   "notices": [
+    {
+      "id": "37122bd0-bcd7-4d37-b79e-187cab450786202691825349",
+      "title": "B.Sc.CSIT 2079 Batch Eight Semester Form Fill Up Notice",
+      "url": "https://macpokhara.edu.np/Notice/noticedetail/37122bd0-bcd7-4d37-b79e-187cab450786202691825349",
+      "date_str": "9/18/2026",
+      "date_iso": "2026-09-18T00:00:00+00:00",
+      "category": "examination",
+      "batches": [
+        "2079"
+      ],
+      "semester": "",
+      "year": "",
+      "body": "B.Sc.CSIT 2079 Batch Eight Semester Form Fill Up Notice\n🕐\r\n                                    9/18/2026 Share",
+      "body_hash": "8fa91a0ac00361c94d41ef51e2c28ef8",
+      "attachments": []
+    },
     {
       "id": "372f1295-4789-4b81-86de-506f7f66668f2024921729",
       "title": "B.Sc.CSIT 2079 Batch, Second Year, Fourth Semester First Terminal Examination Result and Attendance Summary [College]",
@@ -217,22 +233,6 @@
       "year": "second",
       "body": "B.Sc.CSIT 2078 Batch, Second Year, Fourth Semester First Terminal Examination Notice [College]\n🕐\r\n                                    1/8/2024 Share",
       "body_hash": "0d804ccd9efc3ad8da5c9cae09ec8b67",
-      "attachments": []
-    },
-    {
-      "id": "0493819c-0968-4c11-9704-c6707dff1e1a20241814313",
-      "title": "B.Sc.CSIT -2078 Batch Second Year Fourth Semester Regular and Partial Exam Form Fill Up Notice",
-      "url": "https://macpokhara.edu.np/Notice/noticedetail/0493819c-0968-4c11-9704-c6707dff1e1a20241814313",
-      "date_str": "1/8/2024",
-      "date_iso": "2024-01-08T00:00:00+00:00",
-      "category": "examination",
-      "batches": [
-        "2078"
-      ],
-      "semester": "4",
-      "year": "second",
-      "body": "B.Sc.CSIT -2078 Batch Second Year Fourth Semester Regular and Partial Exam Form Fill Up Notice\n🕐\r\n                                    1/8/2024 Share",
-      "body_hash": "069062ec99cb0315e5d84bc64f6719ce",
       "attachments": []
     }
   ]
